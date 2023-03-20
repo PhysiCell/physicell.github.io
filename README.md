@@ -2,4 +2,4 @@
 
 
 # Menu: 
-* [Downloads](downloads)
+* [Downloads](downloads.md)
