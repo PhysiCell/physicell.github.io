@@ -1,7 +1,3 @@
-layout: jekyll-theme-hacker
-title: Downloads
-permalink: /downloads
-
 # PhysiCell Downloads 
 
 ## Version 1.11
