@@ -2,6 +2,8 @@
 PhysiCell is available for download at GitHub and SourceForge. Each download includes code samples.
 
 ## Recent Releases 
+[[1.11](https://github.com/PhysiCell/physicell.github.io/blob/main/downloads.md#version-111-2023) **\*most recent\*** ]
+[[1.10](https://github.com/PhysiCell/physicell.github.io/blob/main/downloads.md#version-110-2022)]
 
 ### Version 1.11 (2023)
 Version 1.11.0 adds several notable features, fixes bugs, and further expands the "signals" and "behaviors" that can be read and written with a simple API to facilitate building models. In particular, we add a brand new CSV format for initial cell positions, a new ability to save and load user projects in the user_projects directory, automated dynamic formation and breakage of spring-based cell-cell adhesions, automated inclusion of spring-based adhesions (at the mechanics time step) without need for the user to explicitly supply a spring function, a new "mechano" sample project to illustrate the new automated spring functionality, and updates to PhysiBoSS to ensure compatibility with the rapidly improving PhysiCell Studio. In addition, there is new capability of adding a background coloring to SVG ouptuts. This release includes several bugfixes, the most critical of which is to update the parameters for necrotic cells.
