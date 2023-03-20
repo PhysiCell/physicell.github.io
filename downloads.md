@@ -1,4 +1,4 @@
-layout: hacker
+layout: jekyll-theme-hacker
 title: Downloads
 permalink: /downloads
 
