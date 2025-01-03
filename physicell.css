@@ -143,8 +143,8 @@ div.menu_button, span.menu_button
  height: 0.6cm;
  padding: 2mm; 
  
- padding-left: 1mm;  
- padding-right: 1mm; 
+ padding-left: 5mm; /*1mm;  */
+ padding-right: 2.5mm; /* 1mm; */ 
  
  border: 0px solid black;
  margin-top: 0px; 
