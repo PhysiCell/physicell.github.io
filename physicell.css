@@ -23,7 +23,7 @@ div.page
  margin-top: 5mm;
  margin-bottom: 5mm;
 
- background-color: white; /* rgb(250,250,245); */
+ background-color: white;  
  padding: 0cm;
 
  border: 1px solid black;
@@ -38,4 +38,991 @@ p
  margin-bottom: 5mm;
  
  text-align: justify; 
+}
+
+h1,h2,h3,h4
+{
+ position: relative; 
+ 
+ text-align: left; 
+ 
+ margin: 0mm;
+ 
+ padding: 15mm;
+ padding-left: 0cm;
+ padding-top: 3mm;
+ padding-bottom: 3mm;
+ border: 0px solid red;
+}
+
+/* header layout */
+
+div.header
+{
+ padding: 0in;
+ 
+ margin-left: 0cm;
+ margin-right: 0cm;
+ margin-top: 0.5cm;
+ margin-bottom: 0.2cm;
+ 
+ width: 11in;
+ height: 3cm; 
+ 
+ background-color: rgb(134,172,229);  
+ 
+ text-align: center;
+  
+ font-size: 2cm;
+ 
+ border: 0px solid green;
+}
+
+/* menu layout */
+
+div.menu
+{
+ display: block;
+ float: left;
+ clear: both;
+
+ 
+ margin-top: 2mm;
+ width: 11in;
+ 
+ padding: 0mm;
+ padding-bottom: 0.5mm;
+ margin-left: auto;
+ margin-right: auto; 
+ text-align: center; 
+ 
+ border: 0px solid black;
+ border-top: 1px solid black;
+ 
+ font-size: 3.3mm; /*.13in; */
+ 
+ background-color: black; 
+ background-repeat: repeat-x;
+ background-image: url('./images/menu_button.png');
+ background-position: left top;
+ 
+ clear: both;
+}
+
+div.submenu
+{
+ float: left;
+ clear: both;
+
+ margin: 0mm;
+ margin-top: 0mm;
+ width: 11in;
+ 
+ padding: 0mm;
+ padding-top: 2mm;
+ 
+ font-size: 3.3mm; 
+ 
+ text-align: justify; 
+ 
+ background-color: black; /* rgb(102,153,153); */ /* rgb(153,153,102); #669999;  rgb(255,128,128); */
+ 
+ border: 0px solid black;
+ border-bottom: 1px solid rgb(128,128,128);
+}
+
+div.menu_button, span.menu_button
+{
+ display: block;
+ 
+ float: left; 
+ /* clear: both;  */
+ text-align: center;
+ 
+ margin: 0px;
+ height: 0.6cm;
+ padding: 2mm; 
+ 
+ padding-left: 1mm;  
+ padding-right: 1mm; 
+ 
+ border: 0px solid black;
+ margin-top: 0px; 
+ border-right: 1px solid rgb(128,128,128);
+ border-left: 1px solid black;
+ 
+ font-weight: 600; /* bold;  */
+ 
+ color: white;
+ background-color: black;
+ 
+ background-image: url('./images/menu_button.png');
+ background-repeat:repeat-x;
+}
+
+
+div.menu_button_brown, span.menu_button_brown
+{
+ display: block;
+ 
+ float: left; 
+ /* clear: both;  */
+ text-align: center;
+ 
+ margin: 0px;
+ height: 0.6cm;
+ padding: 2mm;
+ padding-left: 1.2mm; /* new June 2011 */
+ padding-right: 1.2mm; /* new June 2011 */
+ 
+ border: 0px solid black;
+ margin-top: 0px; 
+ border-right: 1px solid rgb(128,128,128);
+ border-left: 1px solid black;
+ 
+ font-weight: 600; /* bold;  */
+ 
+ color: white;
+ background-color: black;
+ 
+ background-image: url('./images/menu_button_brown.png');
+ background-repeat:repeat-x;
+}
+
+div.menu_button_IU, span.menu_button_IU
+{
+ display: block;
+ 
+ float: left; 
+ /* clear: both;  */
+ text-align: center;
+ 
+ margin: 0px;
+ height: 0.6cm;
+ padding: 2mm;
+ padding-left: 2mm; /* new June 2011 */
+ padding-right: 2mm; /* new June 2011 */
+ 
+ border: 0px solid black;
+ margin-top: 0px; 
+ border-right: 1px solid rgb(128,128,128);
+ border-left: 1px solid black;
+ 
+ font-weight: 600; /* bold;  */
+ 
+ color: white;
+ background-color: black;
+ 
+ background-image: url('./images/menu_button_red.png');
+ background-repeat:repeat-x;
+}
+
+
+
+
+div.submenu_button, span.submenu_button
+{
+ display: block;
+ 
+ float: left; 
+ /* clear: both;  */
+ text-align: center;
+ 
+ margin: 0.5mm;
+ margin-top: 0mm;
+ height: 0.5cm;
+ padding: 0.1cm;
+ /* padding-top:0cm; */
+
+ border: 0px solid red;
+ border-left: 1px solid rgb(128,128,128);
+ border-right: 1px solid rgb(64,64,64);
+ border-radius: 1mm; 
+ 
+ font-weight: 600;
+ 
+ color: white;
+ background-color: #333333;
+}
+
+.submenu_button:hover
+{
+ background-color: red; 
+}
+
+div.submenu_button_current, span.submenu_button_current
+{
+
+ display: block;
+ 
+ float: left; 
+ /* clear: both;  */
+ text-align: center;
+ 
+ margin: 0px;
+ height: 0.5cm;
+ padding: 0.1cm;
+ padding-top:0cm;
+
+ border: 0px solid red;
+ border-left: 1px solid rgb(128,128,128);
+ border-right: 1px solid rgb(64,64,64);
+ 
+ font-weight: 600;
+ 
+ color: orange;
+ background-color: black;
+}
+
+.submenu_button_current:hover
+{
+ color: white; 
+ background-color: red; 		
+}
+
+
+div.menu_button_current, span.menu_button_current
+{
+ display: block;
+ 
+ float: left; 
+ /* clear: both;  */
+ text-align: center;
+ 
+ font-weight: 600; /* bold; */
+ 
+ 
+ margin: 0px;
+ height: 0.6cm;
+ padding: 0.2cm;
+ 
+  padding-left: 1.2mm; /* new June 2011 */
+  padding-right: 1.2mm; /* new June 2011 */
+ 
+ 
+ 
+ border: 0px solid red;
+ margin-top: 0px; 
+ border-right: 1px solid rgb(128,128,128);
+ border-left: 1px solid black;
+ 
+ color: white;
+ background-color: orange;
+ 
+ background-image: url('./images/menu_button.png');
+ background-repeat:repeat-x;
+}
+
+div.menu_button:after
+{
+}
+
+.menu_button:hover
+{
+ color: white;
+ background-color: red;
+}
+
+a.menu_button
+{
+ padding: 0cm;
+ margin: 0cm;
+ 
+ border: 0px solid blue;
+ text-decoration: none;
+}
+
+div.content
+{
+ display: block;
+ clear: left;
+ 
+ width: 6.625in; 
+ margin: 0.5in;  
+ margin-top: 0cm;
+ margin-bottom: 0cm;
+ padding: 0in;
+
+ min-height: 8.5in;  
+ 
+/* min-height: 22.2cm;*/ /* 12cm; */
+}
+
+div.footer
+{
+/* float: bottom; */
+ display: block;
+ clear: left;
+ 
+ vertical-align: bottom;
+ 
+ padding: 2mm;
+ text-align: center;
+ 
+ border-top: 1px dashed black;
+}
+
+/* specific to photo galleries */
+
+h2.photo_gallery
+{
+ text-align: center;
+ font-size: 6mm;
+ margin: 0cm;
+ padding: 0cm;
+}
+h3.photo_gallery
+{
+ text-align: center;
+ font-size: 3mm;
+ 
+ margin: 0cm;
+ padding: 0cm;
+}
+
+
+div.gallery_photo
+{
+ text-align: center;
+ background-color: white;
+ 
+ padding: 2mm;
+ width: 80%;
+ margin-left: 10%;
+ margin-right: 10%;
+ margin-bottom: 1cm;
+ 
+ border: 1px solid black;
+}
+img.gallery_photo
+{
+ border: 1px solid black;
+ padding: 0cm;
+}
+div.gallery_caption
+{
+ margin: 0cm;
+ padding: 2mm;
+ padding-top: 0mm;
+ text-align: justify;
+ border: 0px solid red;
+}
+div.gallery_caption:before
+{
+ content: "Caption: ";
+ font-weight: bold;
+}
+
+p.photo_gallery
+{
+ text-align: center;
+ margin: auto;
+ width: auto;
+ padding: 0cm;
+}
+div.photo_gallery
+{
+ border: 0px solid gray;
+}
+div.photo_gallery_caption
+{
+ border: 0px solid gray;
+}
+
+/* tables */
+td, tr, table
+{
+ border: 0cm solid black;
+ padding: 0cm;
+ margin: 0cm;
+}
+
+img
+{
+ border: 0cm solid black;
+}
+
+/* lists */
+
+
+ul, ol 
+{ 
+ margin-left: 4mm;
+ margin-right: 0mm;
+ padding: 0mm;
+ padding-left: 0mm;
+ border: 0px solid black;
+}
+
+li
+{
+ padding: 0mm;
+ margin: 2mm;
+ margin-bottom: 1mm;
+ margin-top: 0mm;
+ 
+ border: 0px solid red;
+}
+
+ul
+{
+ list-style-type: disc;
+ margin: 0mm;
+ margin-left: 5mm;
+ margin-bottom: 5mm;
+ padding: 0mm;
+}
+
+
+.center
+{ text-align: center; }
+
+.underline
+{
+ text-decoration: underline;
+}
+
+.outline 
+{
+ margin-left: 1mm;
+ margin-right: 1mm;
+ border: 1px dashed black; 
+}
+
+dt
+{
+ padding: 0cm;
+ margin: 0cm;
+ margin-left: 0mm;
+ margin-right: 10mm;
+}
+
+dd
+{
+ padding: 0cm;
+ margin: 0cm; 
+ margin-left: 1cm; 
+ margin-right: 10mm;
+ margin-bottom: 3mm;
+}
+
+dl
+{
+ margin: 0mm;
+ margin-left: 5mm;
+ margin-bottom: 5mm;
+ padding: 0mm;
+}
+
+
+
+.underline
+{
+/* C-storeor: orange; */
+ text-decoration: underline;  
+}
+
+small
+{
+ font-size: 4mm;
+}
+
+ol
+{
+ list-style-type: decimal;	/* arabic */
+}
+
+li
+{
+ margin-bottom: 3mm;	
+}
+
+.red
+{color: red;}
+
+.blue
+{color: blue; }
+
+.plain
+ { text-decoration: none; }
+.plain:hover
+ { text-decoration: underline; }
+ 
+h2
+{ color: rgb(0,0,150); border-bottom: 1mm solid rgb(0,0,100); padding-bottom: 0.5mm; margin-bottom: 1mm; }
+
+h3
+{ color: rgb(150,0,0); border-bottom: 1mm solid rgb(100,0,0); padding-bottom: 0.5mm; margin-bottom: 1mm; }
+
+h4
+{ color: rgb(0,75,0); border-bottom: 0.75mm none rgb(0,75,0); padding-bottom: 0.25mm; margin-bottom: 0.5mm; margin-top: 0mm; padding-top: 0mm;}
+h4:after
+{ content: ":"; }
+
+
+/* blog items */
+
+div.news_post
+ {
+  border: 0.3mm solid black; 
+  /* width: 100%;  */
+  margin: 0cm; 
+  margin-top: 0mm;
+  margin-bottom: 2mm; 
+  padding: 5mm; 
+}
+
+h1.news_post, h2.news_post, h3.news_post
+{
+ padding-left: 0cm;
+ margin: 0cm;
+ padding: 0cm;
+ 
+ border-bottom: 0px solid white;
+ color: black;
+}
+
+h2.news_post
+{
+ text-align: left;
+/* 
+ margin: 0cm;
+ margin-left: 1cm;
+ margin-top: 2mm;
+*/ 
+ font-size: 6mm;
+}
+
+h3.news_post
+{
+ text-align: left;
+ margin-left: 2mm;
+/* 
+ margin: 0cm;
+ margin-left: 1.25cm;
+ margin-bottom: 1mm;
+*/ 
+ font-size: 3.3mm;
+}
+
+hr.news_post
+{
+ height: 0.5mm;
+ background-color: black;
+ border: 0px solid red;
+ 
+ margin: 0cm;
+ margin-bottom: 2mm;
+
+ padding: 0cm;
+/* 
+ margin-left: 5mm;
+ margin-right: 5mm;
+*/ 
+}
+
+/* end blog post items */
+
+/* figures and captions */
+
+div.figure
+{
+ border: 0.3mm solid black; 
+ padding: 2.5mm;
+ 
+ margin: 0mm; 
+ margin-top: 0mm;  /* 0.05mm;  */
+ margin-bottom: 3mm; /* 0.05mm;  */
+ 
+ position: center; /* relative; */
+/* left: 0.75in;*/
+ text-align: center;
+ background-color: white;
+/* width: 4.5in;
+ padding: 0.23in; */
+/* border: 1px solid black; */
+}
+
+div.caption
+{
+ margin: 0in;
+/* 
+ padding-left: 0.01in;
+ padding-right: 0.05in;
+ padding-top: 0.05in;
+ padding-bottom: 0.01in;
+*/ 
+ font-size: 3.3mm; /* 0.10in; */
+ text-align: justify;
+}
+
+/*   sections for "project windows" */
+
+div.project_window
+{
+ background-color:rgb(225,225,225);
+ 
+ min-height: 4.75cm; /* */ 
+ width: 6.375in; 
+ 
+ padding:5mm;
+ border:0.3mm solid black;
+ border-radius: 3mm; 
+ 
+ position: relative; 
+ 
+ padding: 0.125in;
+ margin:0mm;
+ margin-top: 2.5mm;
+ margin-bottom: 2.5mm;
+}
+
+div.project_window_picture
+{
+ background-color: rgb(128,128,128);
+ width: 1.75in;
+ height:1.75in; /* min appropriate? */
+ 
+ position: absolute; 
+ top: 0.125in; 
+ left: 0.125in; 
+ 
+ margin: 0cm;
+ margin-bottom: 5mm; /* added on 7 June 2011 to allow multiple pictures */
+
+ padding: 0cm;
+
+
+ border: 0.3mm solid rgb(128,128,128); 
+ /* min-width: 4.75cm;  */
+ /* min-height: 4.75cm;  */
+}
+
+div.project_window_text
+{
+ background-color: white;
+ border: 0.3mm solid rgb(195,195,195);
+ border-radius: 2mm; 
+ 
+ /* padding: 2.25mm; */
+ padding: .125in; 
+ padding-top: 0mm;
+ 
+ position: relative; 
+ 
+ min-height: 4.5cm;
+ /* width: 11.5cm; */
+ margin-left: 1.875in;
+
+ /* margin: 0mm; */
+}
+
+/* old project div styles
+
+div.project_window
+{
+ border: 0.3mm solid black; 
+ min-height: 4.75cm; 
+ width: 17cm; 
+ padding: 0.5cm; 
+ background-color: rgb(225,225,225);
+ border-radius: 3mm;  
+ margin: 0cm; 
+ margin-top: 2.5mm; 
+ margin-bottom: 2.5 mm; 
+}
+
+div.project_window_picture
+{
+ width: 4.5cm; 
+ border: 0.0mm solid black; 
+ height: 4.75cm;
+ min-width: 4.75cm; 
+ min-height: 4.75cm; 
+ float: left;
+ position: relative; 
+ margin: 0cm; 
+ padding: 0cm; 
+ background-color: red;
+}
+
+div.project_window_text
+{
+ border: 0mm solid white; 
+ border-radius: 2mm; 
+ margin: 0mm; 
+ padding: 2.25mm; 
+ padding-top: 0mm;
+ float: right; 
+ position: relative; 
+ min-height: 4.5cm; 
+ min-width: 11.5cm; 
+ width: 11.5cm; 
+ position: relative; 
+ background-color: white;
+}
+
+
+*/
+
+/* sections for action buttons (mostly on download, publication pages) */
+
+div.action_buttons
+{
+ padding: 0cm;
+ margin: 0cm; 
+ margin-top: 1mm;
+}
+
+a.action_button
+{
+ text-decoration: none; 
+ color: black; 
+ font-size: 3.5mm;
+/* font-weight: 600;  */
+ 
+ padding: 0.25mm;  
+ padding-left: 3mm; /* 3mm */
+ padding-right: 3mm; /* 3mm */
+ background-color: rgb(180,203,238); /* rgb(134,172,229); */
+ 
+ border-radius: 1.25mm;
+ border: 0.3mm solid black; /*rgb(61,122,213);*//* 70% */ /* rgb(90,142,220);*//* 85% */   /* rgb(134,172,229);  *//* 100% */
+/* border-top: 0.3mm solid  rgb(180,203,238);*/    /* 115% */ 
+/* border-bottom: 0.3mm solid black; */
+ 
+ margin: 0.0mm;
+}
+
+a.action_button:hover
+{
+ background-color: rgb(75,52,17);
+ color: white;
+}
+
+.invisible
+{
+ display: none; 
+
+}
+
+
+/*   sections for "people windows" */
+
+div.people_window
+{
+ background-color:rgb(225,225,225);
+ 
+ min-height: 4.75cm; /* */ 
+ width: 6.375in; /* 17.59cm;  */
+ 
+ border:0.3mm solid black;
+ border-radius: 3mm; 
+ 
+ font-size: 3.5mm;
+ 
+ position: relative; 
+ 
+ padding: 2.5mm; /* 5mm; */
+ margin:0mm;
+ margin-top: 2.5mm;
+ margin-bottom: 2.5mm;
+}
+
+div.people_window_picture
+{
+ background-color: rgb(128,128,128);
+ width: 3.5cm; /* 4cm; */
+ height: 4.375cm; /* 5cm; */ /* min appropriate? */
+ 
+ /* float: left; */
+ /*
+ float:left; 
+ clear: both; 
+ */
+
+ position: absolute; 
+ top: .125in; 
+ left: .125in;  
+ 
+ margin: 0cm;
+ margin-bottom: 5mm; /* added on 7 June 2011 to allow multiple pictures */
+
+ padding: 0cm;
+
+
+ border: 0.0mm solid rgb(128,128,128); 
+ /* min-width: 4.75cm;  */
+ /* min-height: 4.75cm;  */
+}
+
+div.people_window_text
+{
+ background-color: white;
+ border: 0.3mm solid rgb(195,195,195);
+ border-radius: 2mm; 
+ 
+ padding: 2.25mm;
+ padding-top: 0mm;
+ 
+ min-height: 5.0cm;
+ min-width: 13.84mm; /* 12.84mm; */ /* 11.5mm; */
+ /* width: 11.5cm; */
+ margin-left: 3.75cm;  /* 4cm; */ /* 4.5cm; */
+ 
+ /* margin: 0mm; */
+}
+
+
+
+div.people_window_compact
+{
+/* background-color:rgb(225,225,225); */
+ 
+ min-height: 4.75cm; /* */ 
+ width: 8.5cm; 
+
+/* 
+ border:0.3mm solid black;
+ border-radius: 3mm; 
+*/ 
+ 
+ font-size: 3.5mm;
+ 
+ padding: 0mm; /* 2mm; */
+ margin:0mm;
+ margin-top: 2.5mm;
+ margin-bottom: 2.5mm;
+ 
+ position: relative;
+ top: 0cm;
+ 
+ border: 1px solid rgb(0,128,0);
+ 
+ float: left;
+}
+
+ 
+div.people_window_picture_compact
+{
+ width:  3cm;
+ height: 3.75cm; /* min appropriate? */
+ 
+ margin: 0mm;
+ padding: 0mm; 
+	
+ position: absolute;
+ left: 0cm; 
+ top: 2cm; 
+ 
+ border: 1px solid blue; 
+}
+
+div.people_window_text_compact
+{
+ width: 4.75cm;
+ 
+ position: absolute; 
+ right: 0cm; 
+ top: 2cm;
+ 
+ border: 1px solid red; 
+}
+
+
+
+
+
+
+
+
+
+
+
+.black
+{ color: black; }
+
+li.compact
+{
+ padding: 0mm;
+ margin: 0mm;
+ margin-bottom: 1mm;
+ margin-top: 0mm;
+ 
+ border: 0px solid red;
+}
+
+dd.compact 
+{
+ padding: 0cm;
+ margin: 0cm; 
+ margin-left: 1cm; 
+ margin-right: 10mm;
+ margin-bottom: 1mm; /* 3mm; */
+}
+
+div.terminal
+{
+ background-color: black;
+ color: white;
+ font-size: 3.3mm;
+ font-family: courier; 
+ padding: 0.5cm; 
+ margin-bottom: 5mm; 
+
+}
+
+.courier
+{
+ background-color: white; 
+ color: red; 
+ font-family: courier; 
+}
+
+div#tweets
+{
+ width: 3.5in;
+ float: right;
+ /* clear: right; */
+ clear: right; 
+
+ margin: 0.125in;  
+}
+
+div#news
+{
+ width: 3.25in;
+ float: right;
+ clear: right; 
+ 
+ 
+ padding: 0.125in;
+ padding-top: 0in; 
+ margin: 0.125in; 
+ margin-top: 0in; 
+ 
+ background-color: #333333;
+ border-radius: 3mm;
+}
+
+
+.download_button
+{
+ padding: 3mm;
+ padding-left: 5mm;
+ padding-right: 5mm;
+ background-color: green;
+ font-size: 6mm;
+ font-weight: normal;
+ border-radius: 3mm;
+ border-top: 1mm solid white;
+ border-left: 1mm solid white;
+ border-right: 1mm solid black;
+ border-bottom: 1mm solid black;
+ color: white;"
+}
+
+.download_button:hover
+{
+ background-color: red; 
 }
