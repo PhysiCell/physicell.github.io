@@ -51,31 +51,34 @@
        <p>
 
 
-
+Lorem ipsum, y'all. 
         </p>
-
-        <h2>Current Version</h2>        
-
-        <table style="width: 100%; border: 1px solid red;">
 
 
         <script>    
             version = "1.4.1"; 
-            
+
+            document.write("<h2>Current Version (" + version + ")</h2>"); 
+            document.write("<table style=\"width: 100%; border: 0px solid red;\">" );
+
+            document.write( "<tr><th style=\"width: 20%;border-bottom: 2px solid black;\">Download</th><th style=\"width: 80%;border-bottom: 2px solid black;\">Link</th></tr>" ); 
+
             GITHUB_URL= "https://github.com/MathCancer/PhysiCell/releases/download/" + version + "/PhysiCell_V." + version + ".zip";
             SF_URL = "https://sourceforge.net/projects/physicell/files/PhysiCell/PhysiCell%20" + version + "/PhysiCell_V." + 
                 version + ".zip/download"; 
             
 
-            // document.write( "<td>GitHub:</td> <td><a href=\"" + GITHUB_URL + "\">" + GITHUB_HURL + "</a></td>\n" ); 
-            document.write( "<tr><td>GitHub:</td><td style=\"font-size: 10pt;\">"
+            document.write( "<tr><td style=\"border-bottom: 1px dotted black;padding-top: 1mm;padding-bottom: 1mm;\"><b>GitHub:</b></td><td style=\"font-size: 8pt;border-bottom: 1px dotted black;padding-top: 1mm;padding-bottom: 1mm;\">"
                 + "<a href=\"" + GITHUB_URL + "\">" + GITHUB_URL + "</a></td></tr>"); 
 
-                document.write( "<tr><td>SourceForge:</td><td style=\"font-size: 10pt;\">"
-                    + "<a href=\"" + SFURL + "\">" + SF_URL + "</a></td></tr>"); 
-                            </script>
+            document.write( "<tr><td style=\"border-bottom: 1px dotted black;padding-top: 1mm;padding-bottom: 1mm;\"><b>SourceForge:</b></td><td style=\"font-size: 8pt;border-bottom: 1px dotted black;padding-top: 1mm;padding-bottom: 1mm;\"><a href=\"" + SF_URL + "\">" + SF_URL + "</a></td></tr>"  );
 
-        </table>
+            document.write("<tr><td style=\"border-bottom: 1px dotted black;padding-top: 1mm;padding-bottom: 1mm;\"><b>Pre-Compiled Binaries:</b></td>" + 
+                "<td style=\"border-bottom:1px dotted black;padding-top: 1mm;padding-bottom: 1mm;\"></td></tr>" ); 
+
+            document.write( "</table>");
+
+                            </script>
 
         <h2>Previous Versions</h2>
         <table style="width: 100%; border: 1px solid red;">
