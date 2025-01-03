@@ -200,8 +200,8 @@ div.menu_button_IU, span.menu_button_IU
  margin: 0px;
  height: 0.6cm;
  padding: 2mm;
- padding-left: 2mm; /* new June 2011 */
- padding-right: 2mm; /* new June 2011 */
+ padding-left: 5mm; /* new June 2011 */
+ padding-right: 5mm; /* new June 2011 */
  
  border: 0px solid black;
  margin-top: 0px; 
