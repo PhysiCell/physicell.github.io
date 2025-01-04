@@ -3,6 +3,38 @@
 
 <head>
 
+    <!-- small javascript functions -->
+    <script lang="javascript">
+        function format_release( version, date, notes )
+        {
+            mystring = "<tr style=\"vertical-align: top; border-top: 1px solid darkgrey;\">" + 
+                "<td style=\"padding-top: 1mm;\"><span style=\"font-weight: bold; color: #990000\">" + version + "</span><br>(" + date + ")</td>" + 
+                "<td style=\"padding-bottom: 1mm; padding-top: 1mm;\">" + notes + "</td> \n </tr>";
+            
+            mystring += 
+            "<tr style=\"vertical-align: top;\">\n" + 
+                "<td style=\"font-weight: bold;\">GitHub:</td>" + 
+                "<td style=\"font-size: 8pt;padding-bottom: 1mm;\"><a href=\"https://github.com/MathCancer/PhysiCell/releases/download/" 
+                    + version + "/PhysiCell_V." + version + ".zip\">" + 
+                    "https://github.com/MathCancer/PhysiCell/releases/download/" + version + "/PhysiCell_V." + version + ".zip</a></td>" + 
+            "</tr>" ; 
+
+            mystring += 
+            "<tr style=\"vertical-align: top;\">" + 
+                "<td style=\"font-weight: bold;\">SourceForge:</td>" +
+                "<td style=\"font-size: 8pt;padding-bottom: 5mm;\"><a href=\"https://sourceforge.net/projects/physicell/files/PhysiCell/PhysiCell%20" + 
+                version + "/PhysiCell_V." + version + ".zip/download\">" + 
+                    "https://sourceforge.net/projects/physicell/files/PhysiCell/PhysiCell%20" + version + "/PhysiCell_V." + 
+                    version + ".zip/download</a>" + "</a></td>"; 
+
+            mystring += "</tr>";
+
+            document.write( mystring ); 
+            return mystring; 
+        }
+    </script>
+
+
  
     <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"> 
  
@@ -81,32 +113,102 @@ Lorem ipsum, y'all.
                             </script>
 
         <h2>Recent Versions</h2>
-        <table style="width: 100%; border: 0px solid red;">
-            <tr">
-               <th style="border-bottom: 2px solid black; width: 25%; padding-bottom: 1mm;">Version (Date)</th>
+        <table style="width: 100%; border: 0px solid red; border-collapse: collapse; line-height: 120%;">
+            <tr style="border: 0px solid blue; line-height: 120%;">
+               <th style="border-bottom: 2px solid black;padding-bottom: 1mm; width: 20%;">Version (Date)</th>
                <th style="border-bottom: 2px solid black; padding-bottom: 1mm;">Notes &amp; Links</th>
             </tr>
     
+            <!-- 1.14.1 -->
+            <script>format_release("1.14.1", "2024-12-13", "Bugfix release; introduced asymmetric division; PhysiBoSS and PhysiMeSS update"); </script>
 
-            <tr>
-                <td style="font-weight: bold; color: #990000; vertical-align: top;">1.4.1 (2024-12-13)</td>
-                <td>Bugfix release; introduced asymmetric division; PhysiBoSS and PhysiMeSS update</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold;">GitHub:</td>
-                <td style="font-size: 8pt;padding-bottom: 1mm;"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold;">SourceForge:</td>
-                <td style="font-size: 8pt;padding-bottom: 1mm;"></td>
-            </tr>
-            <tr>
-                <!-- <td colspan=2>stuf stuf stuf stuff fstuff stuff stuff stuff </td> -->
-            </tr>
+            <!-- 1.14.0 -->
 
-            
+            <script>
+            notes =  "Introduce updated cell behavior grammar (v3.0), including new cell integrity, " + 
+            "refined damage models, improved effect attacks, updated phagocytosis and more. Several bugfixes."; 
+            format_release("1.14.0", "2024-09-15", notes );
+            </script>
+
+            <!-- 1.13.1 -->
+
+            <script>
+            notes =  "Bugfixes, new makefile rules to save and load user projects";  + 
+            format_release("1.13.1", "2023-08-23", notes );
+            </script>
+
+            <!-- 1.13.0 -->
+
+            <script>
+                notes =  "Introduce PhysiMeSS.";  + 
+                format_release("1.13.0", "2023-07-29", notes );
+            </script>
+    
+            <!-- 1.12.0 -->
+
+            <script>
+                notes =  "Introduces rules-based modeling via the cell behavior hypothesis grammar. Code-free modeling now supported for PhysiCell Studio.";  + 
+                format_release("1.12.0", "2023-05-15", notes );
+            </script>
+    
+            <!-- 1.11.0 -->
+
+            <script>
+                notes =  "Expands the signals and behaviors in the cell behavior grammar, and a new CSV format for initial cell positions. Ability to save user_projects." +
+                "Adds automated formation/breakages of cell-cell springs." + 
+                "Improved SVG plots, new sample projects, and numerous bugfixes.";
+                format_release("1.11.0", "2023-05-15", notes );
+            </script>
+    
+
+            <!-- 1.10.4 -->
+
+            <script>
+                notes =  "Bugfixes in file output, ode-energy-sample. Improved thread safety in phagocytosis."; 
+                format_release("1.10.4", "2022-07-18", notes );
+            </script>
+    
+            <!-- 1.10.3 -->
+
+            <script>
+                notes =  "Bugfixes, refined signal and behavior dictionaries including custom variables. New `conserved` attribute for custom variables." + 
+                "Updates libRoadrunner and PhysiBoSS"; 
+                format_release("1.10.3", "2022-06-25", notes );
+            </script>    
+
+            <!-- 1.10.2 -->
+
+            <script>
+                notes =  "Bugfixes, and some ease-of-access functions for cell properties."; 
+                format_release("1.10.2", "2022-05-24", notes );
+            </script>                
+
+            <!-- 1.10.1 -->
+
+            <script>
+                notes =  "Bugfixes to improve XML parser robustness. Adds missing PhysiBoSS makefiles."; 
+                format_release("1.10.1", "2022-05-15", notes );
+            </script>                
+
+            <!-- 1.10.0 -->
+
+            <script>
+                notes =  "New standardized functions for" + 
+                "phagocytosis, cell effector attack, cell fusion, cell transformation (type changes), advanced chemotaxi, " +
+                "cell adhesion affinities for preferential cell-cell adhesion, and more. New auto-generated `dictionaries` " +
+                "of signals and behaviors for use in intracellular models. Bugfixes including better PRNGs and improved thread safety."; 
+                format_release("1.10.0", "2022-05-13", notes );
+            </script>                
+
+    <!-- " New standardized functions for" + 
+                "phagocytosis, cell effector attack, cell fusion, cell transformation (type changes), Improved SVG plots, new sample projects, and numerous bugfixes."; -->
+
+    
+
+    
         </table>
+
+        <p>For older releases, please see <a href="https://github.com/MathCancer/PhysiCell/releases">prior releases</a>.</p>
 
        <!--
        <iframe src="https://www.youtube.com/embed/videoseries?list=PL1IHi3Kb0zyn-HBXeMBLjTU_-rFEKqFKM&autoplay=1" allowfullscreen style="width: 100%; height: 5in; margin-bottom: 1cm;"></iframe>
