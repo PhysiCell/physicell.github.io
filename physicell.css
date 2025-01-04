@@ -342,8 +342,10 @@ div.content
  display: block;
  clear: left;
  
- width: 6.625in; 
- margin: 0.5in;  
+/* width: 6.625in; */
+width: 8.5in; 
+/* margin: 0.5in;  */
+ margin: 1.25in; 
  margin-top: 0cm;
  margin-bottom: 0cm;
  padding: 0in;
@@ -352,6 +354,8 @@ div.content
  
 /* min-height: 22.2cm;*/ /* 12cm; */
 }
+
+
 
 div.footer
 {
@@ -1030,4 +1034,11 @@ div#news
 .download_button:hover
 {
  background-color: red; 
+}
+
+p.quote
+{
+  padding-left: 0.5in; 
+  padding-right: 0.5in; 
+  font-style: italic;
 }
