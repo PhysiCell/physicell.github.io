@@ -1042,3 +1042,44 @@ p.quote
   padding-right: 0.5in; 
   font-style: italic;
 }
+
+/* HTML5 figures */
+
+figure
+{
+  width: 35%;
+  float: right; 
+  background-color: white;
+  border: 1px solid black;
+  padding: 2.5mm; 
+  margin: 5mm; 
+  margin-right: 0mm; 
+  margin-top: 1mm; 
+  margin-bottom: 1mm;    
+}
+
+figure.left
+{
+  width: 35%;
+  float: left; 
+  background-color: white;
+  border: 1px solid black;
+  padding: 2.5mm; 
+  margin: 5mm; 
+  margin-left: 0mm; 
+  margin-top: 1mm; 
+  margin-bottom: 1mm;    
+}
+
+img.figure
+{
+  width: 100%; 
+  padding: 0mm; 
+  margin: 0mm; 
+}
+
+figcaption
+{
+  font-size: 10pt; 
+  line-height: 1em;
+}
