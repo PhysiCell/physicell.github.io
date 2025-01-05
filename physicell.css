@@ -906,7 +906,7 @@ div.people_window_compact
  position: relative;
  top: 0cm;
  
- border: 1px solid rgb(0,128,0);
+ border: 1px solid rgb(0, 98, 65); /* rgb(0,128,0); */
  
  float: left;
 }
