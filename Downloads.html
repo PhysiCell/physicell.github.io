@@ -7,6 +7,9 @@
     <script>
         function format_release( version, date, notes )
         {
+            /* update this at every release */ 
+            version = "1.14.2";
+
             mystring = "<tr style=\"vertical-align: top; border-top: 1px solid darkgrey;\">" + 
                 "<td style=\"padding-top: 1mm;\"><span style=\"font-weight: bold; color: #990000\">" ; 
 
@@ -101,7 +104,7 @@
 
 <h2>Get the Latest Version of PhysiCell</h2>
         <script>    
-            version = "1.14.2"; 
+            // version = "1.14.2"; 
 
             document.write("<h3>Current Version (" + version + ")</h3>"); 
             document.write("<table style=\"width: 100%; border: 0px solid red;\">" );
@@ -153,7 +156,7 @@
             </tr>
 
             <!-- 1.14.2 -->
-            <script>format_release("1.14.2", "2024-01-20", "Bugfix release; minor grammar and feature refinements; new features to help future PhysiGym addon"); </script>          
+            <script>format_release("1.14.2", "2025-01-20", "Bugfix release; minor grammar and feature refinements; new features to help future PhysiGym addon"); </script>          
 
             <!-- 1.14.1 -->
             <script>format_release("1.14.1", "2024-12-13", "Bugfix release; introduced asymmetric division; PhysiBoSS and PhysiMeSS update"); </script>
