@@ -40,7 +40,7 @@ p
  text-align: justify; 
 }
 
-h1,h2,h3,h4
+h1,h2,h3,h4,h5
 {
  position: relative; 
  
@@ -558,15 +558,18 @@ li
  { text-decoration: underline; }
  
 h2
-{ color: rgb(0,0,150); border-bottom: 1mm solid rgb(0,0,100); padding-bottom: 0.5mm; margin-bottom: 1mm; }
+{ color: rgb(0,0,150); border-bottom: 1mm solid rgb(0,0,100); padding-bottom: 0.5mm; margin-bottom: 1mm; font-size: 6mm;}
 
 h3
-{ color: rgb(150,0,0); border-bottom: 1mm solid rgb(100,0,0); padding-bottom: 0.5mm; margin-bottom: 1mm; }
+{ color: rgb(150,0,0); border-bottom: 1mm solid rgb(100,0,0); padding-bottom: 0.5mm; margin-bottom: 1mm; font-size: 5mm; }
 
 h4
-{ color: rgb(0,75,0); border-bottom: 0.75mm none rgb(0,75,0); padding-bottom: 0.25mm; margin-bottom: 0.5mm; margin-top: 0mm; padding-top: 0mm;}
+{ color: rgb(0,75,0); border-bottom: 0.75mm dotted rgb(0,75,0); padding-bottom: 0.25mm; margin-bottom: 0.5mm; margin-top: 0mm; padding-top: 0mm; font-size: 4.5mm;}
 h4:after
 { content: ":"; }
+
+h5
+{ color: rgb(0,0,150); border-bottom: 0.75mm none rgb(0,0,75); padding-bottom: 0.25mm; margin-bottom: 0.5mm; margin-top: 0mm; padding-top: 0mm; font-size: 4mm;}
 
 
 /* blog items */
