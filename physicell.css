@@ -498,6 +498,7 @@ ul
  border: 1px dashed black; 
 }
 
+
 dt
 {
  padding: 0cm;
@@ -523,12 +524,18 @@ dl
  padding: 0mm;
 }
 
-
-
 .underline
 {
 /* C-storeor: orange; */
  text-decoration: underline;  
+}
+
+.code
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: rgb(216,96,0);
+  font-size: 4.5mm;  
 }
 
 small
