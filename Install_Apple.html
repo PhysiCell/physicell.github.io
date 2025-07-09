@@ -1,0 +1,142 @@
+<h1 id="setup-physicell-on-macos">Setup PhysiCell on macOS</h1>
+<p>We will install everything PhysiCell related under the src folder that we will place in your home directory. If you prefer another folder name, please adjust the commands accordingly.</p>
+<h2 id="operating-system-dependencies.">🍎 Operating system dependencies.</h2>
+<h3 id="install-brew">✨ Install Brew:</h3>
+<p>Follow the instruction to download and install brew. Basically, copy the installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.</p>
+<ul>
+<li>https://brew.sh/</li>
+</ul>
+<p>Don’t forget to put brew under your $PATH.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">if</span> ! <span class="fu">grep</span> -Fq <span class="st">&#39;/opt/homebrew/bin&#39;</span> ~/.zshrc</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="kw">then</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    <span class="bu">echo</span> <span class="st">&#39;export PATH=/opt/homebrew/bin:$PATH&#39;</span> <span class="op">&gt;&gt;</span> ~/.zshrc</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="kw">fi</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="kw">if</span> ! <span class="fu">grep</span> -Fq <span class="st">&#39;/opt/homebrew/bin&#39;</span> ~/.bash_profile</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="kw">then</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>    <span class="bu">echo</span> <span class="st">&#39;export PATH=/opt/homebrew/bin:$PATH&#39;</span> <span class="op">&gt;&gt;</span> ~/.bash_profile</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="kw">fi</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="kw">if</span> <span class="fu">ps</span> -p <span class="va">$$</span> <span class="kw">|</span> <span class="fu">grep</span> zsh</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="kw">then</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>    <span class="bu">source</span> ~/.zshrc</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a><span class="kw">else</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>    <span class="bu">source</span> ~/.bash_profile</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a><span class="kw">fi</span></span></code></pre></div>
+<h3 id="install-gcc-imagemagick-and-ffmpeg-required-by-physicell">✨ Install GCC, ImageMagick, and FFmpeg (required by PhysiCell):</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">brew</span> install gcc imagemagick ffmpeg</span></code></pre></div>
+<h2 id="basic-phyicell-installation">🍎 Basic PhyiCell installation</h2>
+<p>Important: before you run the basic physicell installation, you have to install the operating system dependencies!</p>
+<h3 id="install-physicell">✨ Install PhysiCell:</h3>
+<p>Copy the installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">if</span><span class="bu"> [</span> <span class="ot">-d</span> ~/src/PhysiCell<span class="bu"> ]</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="kw">then</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>    <span class="bu">echo</span> <span class="st">&quot;ERROR : /Users/</span><span class="va">$USER</span><span class="st">/src/PhysiCell already exists! please delete the folder if you want to do a reinstallation. installation terminated.&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="kw">else</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>    <span class="fu">mkdir</span> -p ~/src</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>    <span class="bu">cd</span> ~/src</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>    <span class="kw">if</span> ! <span class="fu">grep</span> -Fq <span class="st">&#39;export PHYSICELL_CPP=&#39;</span> ~/.zshrc</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>    <span class="kw">then</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>        <span class="bu">echo</span> export PHYSICELL_CPP=<span class="va">$(</span><span class="fu">bash</span> -c <span class="st">&quot;compgen -c&quot;</span> <span class="kw">|</span> <span class="fu">grep</span> -m 1 -e <span class="st">&#39;^g++-[0-9]\+&#39;</span><span class="va">)</span> <span class="op">&gt;&gt;</span> ~/.zshrc</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>    <span class="kw">fi</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a>    <span class="kw">if</span> ! <span class="fu">grep</span> -Fq <span class="st">&#39;export PHYSICELL_CPP=&#39;</span> ~/.bash_profile</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a>    <span class="kw">then</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a>        <span class="bu">echo</span> export PHYSICELL_CPP=<span class="va">$(</span><span class="fu">bash</span> -c <span class="st">&quot;compgen -c&quot;</span> <span class="kw">|</span> <span class="fu">grep</span> -m 1 -e <span class="st">&#39;^g++-[0-9]\+&#39;</span><span class="va">)</span> <span class="op">&gt;&gt;</span> ~/.bash_profile</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a>    <span class="kw">fi</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a>    <span class="kw">if</span> <span class="fu">ps</span> -p <span class="va">$$</span> <span class="kw">|</span> <span class="fu">grep</span> zsh</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true"></a>    <span class="kw">then</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true"></a>        <span class="bu">source</span> ~/.zshrc</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true"></a>    <span class="kw">else</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true"></a>        <span class="bu">source</span> ~/.bash_profile</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true"></a>    <span class="kw">fi</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true"></a>    <span class="ex">curl</span> -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/<span class="va">$(</span><span class="ex">curl</span> https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt<span class="va">)</span>.zip <span class="op">&gt;</span> download.zip</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true"></a>    <span class="fu">unzip</span> download.zip</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true"></a>    <span class="fu">rm</span> download.zip</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true"></a>    <span class="fu">rm</span> -fr PhysiCell</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true"></a>    <span class="fu">mv</span> PhysiCell-<span class="va">$(</span><span class="ex">curl</span> https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt<span class="va">)</span> PhysiCell</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true"></a><span class="kw">fi</span></span></code></pre></div>
+<h3 id="test-the-phyicell-installation-with-the-template-sample-project">✨ Test the PhyiCell installation with the template sample project:</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="bu">cd</span> ~/src/PhysiCell</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">make</span> template</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">make</span> -j8</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">./project</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">make</span> jpeg</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">make</span> gif</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="fu">make</span> movie</span></code></pre></div>
+<h2 id="essential-installation">🍎 Essential installation</h2>
+<p>We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries. We will name this python3 environment pcvenv (PhysiCell virtual environment).</p>
+<h3 id="install-physicell-studio">✨ Install PhysiCell-Studio:</h3>
+<p>Copy the installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="kw">if</span><span class="bu"> [</span> <span class="ot">-d</span> ~/src/PhysiCell-Studio<span class="bu"> ]</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="kw">then</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>    <span class="bu">echo</span> <span class="st">&quot;ERROR : /Users/</span><span class="va">$USER</span><span class="st">/src/PhysiCell-Studio already exists! please delete the folder if you want to do a reinstallation. installation terminated.&quot;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="kw">else</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>    <span class="bu">cd</span> ~/src</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>    <span class="ex">python3</span> -m venv pcvenv</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>    <span class="kw">if</span> ! <span class="fu">grep</span> -Fq <span class="st">&#39;alias pcvenv=&#39;</span> ~/.zshrc</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a>    <span class="kw">then</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a>        <span class="bu">echo</span> <span class="st">&quot;alias pcvenv=</span><span class="dt">\&quot;</span><span class="st">source /Users/</span><span class="va">$USER</span><span class="st">/src/pcvenv/bin/activate</span><span class="dt">\&quot;</span><span class="st">&quot;</span> <span class="op">&gt;&gt;</span> ~/.zshrc</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a>    <span class="kw">fi</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true"></a>    <span class="kw">if</span> ! <span class="fu">grep</span> -Fq <span class="st">&#39;alias pcvenv=&#39;</span> ~/.bash_profile</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true"></a>    <span class="kw">then</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true"></a>        <span class="bu">echo</span> <span class="st">&quot;alias pcvenv=</span><span class="dt">\&quot;</span><span class="st">source /Users/</span><span class="va">$USER</span><span class="st">/src/pcvenv/bin/activate</span><span class="dt">\&quot;</span><span class="st">&quot;</span> <span class="op">&gt;&gt;</span> ~/.bash_profile</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true"></a>    <span class="kw">fi</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true"></a>    <span class="bu">source</span> /Users/<span class="va">$USER</span>/src/pcvenv/bin/activate</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true"></a>    <span class="ex">curl</span> -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v<span class="va">$(</span><span class="ex">curl</span> https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt<span class="va">)</span>.zip <span class="op">&gt;</span> download.zip</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true"></a>    <span class="fu">unzip</span> download.zip</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true"></a>    <span class="fu">rm</span> download.zip</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true"></a>    <span class="fu">rm</span> -fr PhysiCell-Studio</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true"></a>    <span class="fu">mv</span> PhysiCell-Studio-<span class="va">$(</span><span class="ex">curl</span> https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt<span class="va">)</span> PhysiCell-Studio</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true"></a>    <span class="ex">pip3</span> install -r PhysiCell-Studio/requirements.txt</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true"></a>    <span class="bu">cd</span> ~/src/pcvenv/bin/</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true"></a>    <span class="bu">echo</span> <span class="st">&quot;python3 /Users/</span><span class="va">$USER</span><span class="st">/src/PhysiCell-Studio/bin/studio.py </span><span class="dt">\$</span><span class="st">*&quot;</span> <span class="op">&gt;</span> pcstudio</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true"></a>    <span class="fu">chmod</span> 775 pcstudio</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true"></a>    <span class="bu">cd</span> ~/src</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true"></a><span class="kw">fi</span></span></code></pre></div>
+<h3 id="test-the-physicell-studio-installation">✨ Test the PhysiCell-Studio installation:</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="bu">cd</span> ~/src/PhysiCell</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="ex">pcvenv</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="ex">pcstudio</span></span></code></pre></div>
+<h3 id="official-physicell-studio-manual">✨ Official PhysiCell Studio manual:</h3>
+<ul>
+<li>https://github.com/PhysiCell-Tools/Studio-Guide/tree/main</li>
+</ul>
+<h2 id="advanced-installation">🍎 Advanced installation</h2>
+<h3 id="install-physicell-data-loader-pcdl-and-ipython">✨ Install PhysiCell Data Loader (pcdl) and iPython:</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="ex">pcvenv</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">pip3</span> install pcdl ipython</span></code></pre></div>
+<h3 id="test-the-pcdl-installation">✨ Test the pcdl installation:</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="ex">ipython</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="im">import</span> pcdl</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>exit()</span></code></pre></div>
+<h3 id="official-pcdl-manual">✨ Official pcdl manual:</h3>
+<ul>
+<li>https://github.com/PhysiCell-Tools/python-loader</li>
+</ul>
+<h2 id="ide-vscode-integration-optional">🍏 IDE VSCode integration (optional)</h2>
+<ol type="1">
+<li><p>Install vs code, either from your operating system’s app store or from https://code.visualstudio.com/ .</p></li>
+<li><p>Generate a vs code profile for physicell:</p></li>
+</ol>
+<pre><code>File | New Window with Profile
+Name: physicell
+Icon: choose something cool.
+Create
+Add Folder: Users/&lt;username&gt;/src
+click the profile icon (default is a gearwheel) on the left side bottom corner.
+Profile &gt; physicell</code></pre>
+<ol start="3" type="1">
+<li>Open the Folder:</li>
+</ol>
+<pre><code>File | Open Folder… | src | Open
+Yes, I trust the authors</code></pre>
+<ol start="4" type="1">
+<li>Install the official python and C++ extensions into the profile:</li>
+</ol>
+<pre><code>click the profile icon (default is a gearwheel) on the left side bottom corner.
+Profile &gt; physicell
+Extension: Python Install
+Extension: C/C++ Install</code></pre>
+<ol start="5" type="1">
+<li>Link pcvenv (the python environment we generated above):</li>
+</ol>
+<pre><code>View | Command Palette… | Python: Select Interpreter |
+Enter interpreter path… | Find… | src/pcvenv</code></pre>
