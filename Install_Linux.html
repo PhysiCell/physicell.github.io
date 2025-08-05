@@ -49,6 +49,7 @@
         <div class="content">
 
         <h1>&#x1F427; Setup PhysiCell on Linux</h1>
+
         <p>This document describes the PhysiCell installation on a Debian Linux distribution. If you run on another flavor, please adjust accordingly.</p>
         <p>We will install everything PhysiCell related under the ~/src folder. If you prefer another folder name, please adjust the commands accordingly.</p>
 
@@ -56,35 +57,25 @@
 
         <h3>Update the package manager:</h3>
         <div>
-        <pre><code>
-sudo apt update
-sudo apt upgrade
-        </code></pre>
+        <pre><code>sudo apt update</code></pre>
+        <pre><code>sudo apt upgrade</code></pre>
         </div>
 
         <h3>Install GCC (required by PhysiCell):</h3>
-        <div>
-        <pre><code>
-sudo apt install build-essential
-        </code></pre>
-        </div>
+        <div><pre><code>sudo apt install build-essential</code></pre></div>
 
         <h3>Install Image Magick (required by PhysiCell):</h3>
         <p>ImageMagick is used for making jpeg and gif images from PhysiCell svg image output.</p>
         <p>The PhysiCell <code>Makefile</code> is written for <strong>ImageMagick &gt;= version 7</strong>, which requires a magick command in front of each ImageMagick command (e.g. magick convert instead of convert). Many Linux distributions ship with <strong>ImageMagick version 6</strong>. This is why we might have to tewak a bit the installation.</p>
 
         <div>
-        <pre><code>
-sudo apt install imagemagick
-        </code></pre>
+        <pre><code>sudo apt install imagemagick</code></pre>
         </div>
 
         <p>Now try:</p>
 
         <div>
-        <pre><code>
-magic --version
-        </code></pre>
+        <pre><code>magick --version</code></pre>
         </div>
 
         <ol type="1">
@@ -93,9 +84,7 @@ magic --version
         </ol>
 
         <div>
-        <pre><code>
-convert --version
-        </code></pre>
+        <pre><code>convert --version</code></pre>
         </div>
 
         <ol start="3" type="1">
@@ -104,36 +93,29 @@ convert --version
 
         <p><strong>If and only if you have &lt;= version 6 installed</strong>, you can follow the instruction below to generate a magick command that simply passes everything to the next command. This will make the PhysiCell Makefile work for you too.</p>
         <p><code>cd</code> to the folder where you have your manual installed binaries. e.g. <code>~/.local/bin/</code></p>
+        <p>Run this code line by line.</p>
 
         <div>
-        <pre><code>
-echo &#39;$*&#39;&gt; magick
-chmod 775 magick
-which magick
-        </code></pre>
+        <pre><code>echo &#39;$*&#39;&gt; magick</code></pre>
+        <pre><code>chmod 775 magick</code></pre>
+        <pre><code>which magick</code></pre>
         </div>
 
         <h3>Install FFmpeg, Tar, Gzip, and Unzip (required by PhysiCell):</h3>
         <div>
-        <pre><code>
-sudo apt install ffmpeg tar gzip unzip
-        </code></pre>
+        <pre><code>sudo apt install ffmpeg tar gzip unzip</code></pre>
         </div>
 
         <h3>Install the Qt 5 library (required by PhysiCell-Studio):</h3>
         <div>
-        <pre><code>
-sudo apt install qtbase5-dev
-        </code></pre>
+        <pre><code>sudo apt install qtbase5-dev</code></pre>
         </div>
 
         <h3>Install Python (required by PhysiCell-Studio and PhysiCell Data Loader):</h3>
         <p>Python is most probably already installed, but pip might be missing (required by PhysiCell-Studio and pcdl).</p>
 
         <div>
-        <pre><code>
-sudo apt install python3-pip
-        </code></pre>
+        <pre><code>sudo apt install python3-pip</code></pre>
         </div>
 
         <h2>Basic PhyiCell installation</h2>
@@ -167,14 +149,16 @@ fi
 
         <h3>Test the PhyiCell installation with the template sample project:</h3>
         <p>Run this code line by line.</p>
-        <div><pre><code>cd ~/src/PhysiCell</code></pre></div>
-        <div><pre><code>make data-cleanup clean reset</code></pre></div>
-        <div><pre><code>make template</code></pre></div>
-        <div><pre><code>make -j8</code></pre></div>
-        <div><pre><code>./project</code></pre></div>
-        <div><pre><code>make jpeg</code></pre></div>
-        <div><pre><code>make gif</code></pre></div>
-        <div><pre><code>make movie</code></pre></div>
+        <div>
+        <pre><code>cd ~/src/PhysiCell</code></pre>
+        <pre><code>make data-cleanup clean reset</code></pre>
+        <pre><code>make template</code></pre>
+        <pre><code>make -j8</code></pre>
+        <pre><code>./project</code></pre>
+        <pre><code>make jpeg</code></pre>
+        <pre><code>make gif</code></pre>
+        <pre><code>make movie</code></pre>
+        </div>
 
         <h2>Essential installation</h2>
         <p>We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries. We will name this python3 environment pcvenv (PhysiCell virtual environment).</p>
@@ -219,9 +203,11 @@ fi
 
         <h3>Test the PhysiCell-Studio installation:</h3>
         <p>Run this code line by line.</p>
-        <div><pre><code>cd ~/src/PhysiCell</code></pre></div>
-        <div><pre><code>pcvenv</code></pre></div>
-        <div><pre><code>pcstudio</code></pre></div>
+        <div>
+        <pre><code>cd ~/src/PhysiCell</code></pre>
+        <pre><code>pcvenv</code></pre>
+        <pre><code>pcstudio</code></pre>
+        </div>
 
         <h3>Official PhysiCell Studio manual:</h3>
         <p>
@@ -232,15 +218,23 @@ fi
 
         <h3>Install PhysiCell Data Loader (pcdl) and iPython:</h3>
         <p>Run this code line by line.</p>
-        <div><pre><code>pcvenv</code></pre></div>
-        <div><pre><code>pip3 install pcdl ipython</code></pre></div>
+        <div>
+        <pre><code>pcvenv</code></pre>
+        <pre><code>pip3 install pcdl ipython</code></pre>
+        </div>
 
         <h3>Test the pcdl installation:</h3>
         <p>Fire up a python shell.</p>
-        <div><pre><code>ipython</code></pre></div>
+        <div>
+        <pre><code>ipython</code></pre>
+        </div>
+
         <p>Inside the python shell write:</p>
-        <div><pre><code>import pcdl</code></pre></div>
-        <div><pre><code>exit()</code></pre></div>
+        <div>
+        <pre><code>import pcdl</code></pre>
+        <pre><code>print(pcdl.__version__)</code></pre>
+        <pre><code>exit()</code></pre>
+        </div>
 
         <h3>Official pcdl manual:</h3>
         <p>
@@ -299,7 +293,7 @@ Enter interpreter path… | Find… | src/pcvenv
             <tr>
             <td style="width: 12%; text-align: left;"><a href="Policies.html">Site Policies</a></td>
             <td style="width: 76%; text-align: center;">
-            Last Modified: January 3, 2025 at 2:54 AM (EST)
+            Last Modified: August 14, 2025 at 0:00 AM (EST)
             <br>
             Copyright &copy; 2007-2025 <a href="Contact.html">Paul Macklin &amp; the PhysiCell Project</a> </td>
             <td style="text-align: right; width: 12%;">
