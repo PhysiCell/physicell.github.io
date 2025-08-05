@@ -48,120 +48,76 @@
 
         <div class="content">
 
-        <h1>&#x1F427; Setup PhysiCell on Linux</h1>
-        <p>This document describes the PhysiCell installation on a Debian Linux distribution. If you run on another flavor, please adjust accordingly.</p>
-        <p>We will install everything PhysiCell related under the ~/src folder. If you prefer another folder name, please adjust the commands accordingly.</p>
+        <h1>&#x1F34E; Setup PhysiCell on macOS</h1>
+        <p>We will install everything PhysiCell related under the src folder that we will place in your home directory. If you prefer another folder name, please adjust the commands accordingly.</p>
 
-        <h2>Operating system library dependencies</h2>
+        <h2>Operating system dependencies.</h2>
 
-        <h3>Update the package manager:</h3>
+        <h3>Install Brew:</h3>
+        <p>Follow the instruction to download and install brew. Basically, copy the installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.</p>
+        <p><a href="https://brew.sh/">https://brew.sh/</a></p>
+        <p>Don’t forget to put brew under your $PATH.</p>
+
         <div>
         <pre><code>
-sudo apt update
-sudo apt upgrade
+        if ! grep -Fq &#39;/opt/homebrew/bin&#39; ~/.zshrc
+        then
+            echo &#39;export PATH=/opt/homebrew/bin:$PATH&#39; &gt;&gt; ~/.zshrc
+        fi
+        if ! grep -Fq &#39;/opt/homebrew/bin&#39; ~/.bash_profile
+        then
+            echo &#39;export PATH=/opt/homebrew/bin:$PATH&#39; &gt;&gt; ~/.bash_profile
+        fi
+        if ps -p $$ | grep zsh
+        then
+            source ~/.zshrc
+        else
+            source ~/.bash_profile
+        fi
         </code></pre>
         </div>
 
-        <h3>Install GCC (required by PhysiCell):</h3>
+        <h3>Install GCC, ImageMagick, and FFmpeg (required by PhysiCell):</h3>
         <div>
         <pre><code>
-sudo apt install build-essential
-        </code></pre>
-        </div>
-
-        <h3>Install Image Magick (required by PhysiCell):</h3>
-        <p>ImageMagick is used for making jpeg and gif images from PhysiCell svg image output.</p>
-        <p>The PhysiCell <code>Makefile</code> is written for <strong>ImageMagick &gt;= version 7</strong>, which requires a magick command in front of each ImageMagick command (e.g. magick convert instead of convert). Many Linux distributions ship with <strong>ImageMagick version 6</strong>. This is why we might have to tewak a bit the installation.</p>
-
-        <div>
-        <pre><code>
-sudo apt install imagemagick
-        </code></pre>
-        </div>
-
-        <p>Now try:</p>
-
-        <div>
-        <pre><code>
-magic --version
-        </code></pre>
-        </div>
-
-        <ol type="1">
-        <li>If ok: you have &gt;= version 7 installed. You are all set!</li>
-        <li>If you receive: Command ‘magick’ not found, try:</li>
-        </ol>
-
-        <div>
-        <pre><code>
-convert --version
-        </code></pre>
-        </div>
-
-        <ol start="3" type="1">
-        <li>If ok: you have version 6 or less installed.</li>
-        </ol>
-
-        <p><strong>If and only if you have &lt;= version 6 installed</strong>, you can follow the instruction below to generate a magick command that simply passes everything to the next command. This will make the PhysiCell Makefile work for you too.</p>
-        <p><code>cd</code> to the folder where you have your manual installed binaries. e.g. <code>~/.local/bin/</code></p>
-
-        <div>
-        <pre><code>
-echo &#39;$*&#39;&gt; magick
-chmod 775 magick
-which magick
-        </code></pre>
-        </div>
-
-        <h3>Install FFmpeg, Tar, Gzip, and Unzip (required by PhysiCell):</h3>
-        <div>
-        <pre><code>
-sudo apt install ffmpeg tar gzip unzip
-        </code></pre>
-        </div>
-
-        <h3>Install the Qt 5 library (required by PhysiCell-Studio):</h3>
-        <div>
-        <pre><code>
-sudo apt install qtbase5-dev
-        </code></pre>
-        </div>
-
-        <h3>Install Python (required by PhysiCell-Studio and PhysiCell Data Loader):</h3>
-        <p>Python is most probably already installed, but pip might be missing (required by PhysiCell-Studio and pcdl).</p>
-
-        <div>
-        <pre><code>
-sudo apt install python3-pip
+        brew install gcc imagemagick ffmpeg
         </code></pre>
         </div>
 
         <h2>Basic PhyiCell installation</h2>
+        <p>Important: before you run the basic physicell installation, you have to install the operating system dependencies!</p>
 
         <h3>Install PhysiCell:</h3>
+        <p>Copy the whole installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.</p>
+
         <div>
         <pre><code>
-install=&#39;Y&#39;
-uart=&#39;None&#39;
-if [ -d ~/src/PhysiCell ]
-then
-    echo &quot;WARNING : /home/$USER/src/PhysiCell already exists! do you wanna re-install? data will be lost! [Y,N]&quot;
-    read uart
-else
-    uart=&#39;Y&#39;
-fi
-if [ $install == $uart ]
-then
-    mkdir -p ~/src
-    cd ~/src
-    curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip &gt; download.zip
-    unzip download.zip
-    rm download.zip
-    rm -fr PhysiCell
-    mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
-else
-    echo &#39;installation terminated.&#39;
-fi
+        if [ -d ~/src/PhysiCell ]
+        then
+            echo &quot;ERROR : /Users/$USER/src/PhysiCell already exists! please delete the folder if you want to do a reinstallation. installation terminated.&quot;
+        else
+            mkdir -p ~/src
+            cd ~/src
+            if ! grep -Fq &#39;export PHYSICELL_CPP=&#39; ~/.zshrc
+            then
+                echo export PHYSICELL_CPP=$(bash -c &quot;compgen -c&quot; | grep -m 1 -e &#39;^g++-[0-9]\+&#39;) &gt;&gt; ~/.zshrc
+            fi
+            if ! grep -Fq &#39;export PHYSICELL_CPP=&#39; ~/.bash_profile
+            then
+                echo export PHYSICELL_CPP=$(bash -c &quot;compgen -c&quot; | grep -m 1 -e &#39;^g++-[0-9]\+&#39;) &gt;&gt; ~/.bash_profile
+            fi
+            if ps -p $$ | grep zsh
+            then
+                source ~/.zshrc
+            else
+                source ~/.bash_profile
+            fi
+            curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip &gt; download.zip
+            unzip download.zip
+            rm download.zip
+            rm -fr PhysiCell
+            mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
+        fi
         </code></pre>
         </div>
 
@@ -180,40 +136,35 @@ fi
         <p>We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries. We will name this python3 environment pcvenv (PhysiCell virtual environment).</p>
 
         <h3>Install PhysiCell-Studio:</h3>
+        <p>Copy the installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.</p>
         <div>
         <pre><code>
-install=&#39;Y&#39;
-uart=&#39;None&#39;
-if [ -d ~/src/PhysiCell-Studio ]
-then
-    echo &quot;WARNING : /home/$USER/src/PhysiCell-Studio already exists! do you wanna re-install? data will be lost! [Y,N]&quot;
-    read uart
-else
-    uart=&#39;Y&#39;
-fi
-if [ $install == $uart ]
-    then
-        cd ~/src
-        python3 -m venv pcvenv
-        if ! grep -Fq &#39;alias pcvenv=&#39; ~/.bash_aliases
-    then
-        echo &quot;alias pcvenv=\&quot;source /home/$USER/src/pcvenv/bin/activate\&quot;&quot; &gt;&gt; ~/.bash_aliases
-
-    fi
-    source /home/$USER/src/pcvenv/bin/activate
-    curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip &gt; download.zip
-    unzip download.zip
-    rm download.zip
-    rm -fr PhysiCell-Studio
-    mv PhysiCell-Studio-$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
-    pip3 install -r PhysiCell-Studio/requirements.txt
-    cd ~/src/pcvenv/bin/
-    echo &quot;python3 /home/$USER/src/PhysiCell-Studio/bin/studio.py \$*&quot; &gt; pcstudio
-    chmod 775 pcstudio
-    cd ~/src
-else
-    echo &#39;installation terminated.&#39;
-fi
+        if [ -d ~/src/PhysiCell-Studio ]
+        then
+            echo &quot;ERROR : /Users/$USER/src/PhysiCell-Studio already exists! please delete the folder if you want to do a reinstallation. installation terminated.&quot;
+        else
+            cd ~/src
+            python3 -m venv pcvenv
+            if ! grep -Fq &#39;alias pcvenv=&#39; ~/.zshrc
+            then
+                echo &quot;alias pcvenv=\&quot;source /Users/$USER/src/pcvenv/bin/activate\&quot;&quot; &gt;&gt; ~/.zshrc
+            fi
+            if ! grep -Fq &#39;alias pcvenv=&#39; ~/.bash_profile
+            then
+                echo &quot;alias pcvenv=\&quot;source /Users/$USER/src/pcvenv/bin/activate\&quot;&quot; &gt;&gt; ~/.bash_profile
+            fi
+            source /Users/$USER/src/pcvenv/bin/activate
+            curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip &gt; download.zip
+            unzip download.zip
+            rm download.zip
+            rm -fr PhysiCell-Studio
+            mv PhysiCell-Studio-$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
+            pip3 install -r PhysiCell-Studio/requirements.txt
+            cd ~/src/pcvenv/bin/
+            echo &quot;python3 /Users/$USER/src/PhysiCell-Studio/bin/studio.py \$*&quot; &gt; pcstudio
+            chmod 775 pcstudio
+            cd ~/src
+        fi
         </code></pre>
         </div>
 
@@ -234,13 +185,20 @@ fi
         <p>Run this code line by line.</p>
         <div><pre><code>pcvenv</code></pre></div>
         <div><pre><code>pip3 install pcdl ipython</code></pre></div>
+        <div><pre><code></code></pre></div>
 
         <h3>Test the pcdl installation:</h3>
-        <p>Fire up a python shell.</p>
-        <div><pre><code>ipython</code></pre></div>
-        <p>Inside the python shell write:</p>
-        <div><pre><code>import pcdl</code></pre></div>
-        <div><pre><code>exit()</code></pre></div>
+        <div>
+        <pre><code>
+        ipython
+        </code></pre>
+        </div>
+        <div>
+        <pre><code>
+        import pcdl
+        exit()
+        </code></pre>
+        </div>
 
         <h3>Official pcdl manual:</h3>
         <p>
@@ -248,19 +206,20 @@ fi
         </p>
 
         <h2>IDE VSCode integration (optional)</h2>
+
         <ol type="1">
         <li><p>Install vs code, either from your operating system’s app store or from https://code.visualstudio.com/ .</p></li>
         <li><p>Generate a vs code profile for physicell:</p></li>
         </ol>
 
         <pre><code>
-File | New Window with Profile
-Name: physicell
-Icon: choose something cool.
-Create
-Add Folder: /home/&lt;username&gt;/src
-click the profile icon (default is a gearwheel) on the left side bottom corner.
-Profile &gt; physicell
+        File | New Window with Profile
+        Name: physicell
+        Icon: choose something cool.
+        Create
+        Add Folder: Users/&lt;username&gt;/src
+        click the profile icon (default is a gearwheel) on the left side bottom corner.
+        Profile &gt; physicell
         </code></pre>
 
         <ol start="3" type="1">
@@ -268,8 +227,8 @@ Profile &gt; physicell
         </ol>
 
         <pre><code>
-File | Open Folder… | src | Open
-Yes, I trust the authors
+        File | Open Folder… | src | Open
+        Yes, I trust the authors
         </code></pre>
 
         <ol start="4" type="1">
@@ -277,10 +236,10 @@ Yes, I trust the authors
         </ol>
 
         <pre><code>
-click the profile icon (default is a gearwheel) on the left side bottom corner.
-Profile &gt; physicell
-Extension: Python Install
-Extension: C/C++ Install
+        click the profile icon (default is a gearwheel) on the left side bottom corner.
+        Profile &gt; physicell
+        Extension: Python Install
+        Extension: C/C++ Install
         </code></pre>
 
         <ol start="5" type="1">
@@ -288,8 +247,8 @@ Extension: C/C++ Install
         </ol>
 
         <pre><code>
-View | Command Palette… | Python: Select Interpreter |
-Enter interpreter path… | Find… | src/pcvenv
+        View | Command Palette… | Python: Select Interpreter |
+        Enter interpreter path… | Find… | src/pcvenv
         </code></pre>
 
         </div>
