@@ -48,7 +48,7 @@
 
                 <div class="content">
 
-                <h1>&#x1F427; Setup PhysiCell on Windows</h1>
+                <h1>&#x1FA9F; Setup PhysiCell on Windows</h1>
                 <p>We will install everything PhysiCell related under the src folder that we will place in your Windows Home directory. If you prefer another folder name, please adjust the commands accordingly.</p>
 
                 <h2>Operating system dependencies</h2>
@@ -62,9 +62,7 @@
                 <p>In the Windows Taskbar Search box, type msys2. Open the MSYS2 MINGW64 shell ~ the one with the blue MSYS2 icon, no other color!</p>
 
                 <div>
-                <pre><code>
-                pacman -S mingw-w64-x86_64-gcc make mingw-w64-x86_64-imagemagick mingw-w64-x86_64-ffmpeg unzip zip mingw-w64-x86_64-ca-certificates
-                </code></pre>
+                <pre><code>pacman -S mingw-w64-x86_64-gcc make mingw-w64-x86_64-imagemagick mingw-w64-x86_64-ffmpeg unzip zip mingw-w64-x86_64-ca-certificates</code></pre>
                 </div>
 
                 <h2>Basic PhyiCell installation</h2>
@@ -75,42 +73,46 @@
 
                 <div>
                 <pre><code>
-                install=&#39;Y&#39;
-                uart=&#39;None&#39;
-                if [ -d /c/Users/$USER/src/PhysiCell ]
-                then
-                    echo &quot;WARNING : /c/Users/$USER/src/PhysiCell already exists! do you wanna re-install? data will be lost! [Y,N]&quot;
-                    read uart
-                else
-                    uart=&#39;Y&#39;
-                fi
-                if [ $install == $uart ]
-                then
-                    mkdir -p /c/Users/$USER/src
-                    cd /c/Users/$USER/src
-                    curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip &gt; download.zip
-                    unzip download.zip
-                    rm download.zip
-                    rm -fr PhysiCell
-                    mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
-                else
-                    echo &#39;installation terminated.&#39;
-                fi
+install=&#39;Y&#39;
+uart=&#39;None&#39;
+if [ -d /c/Users/$USER/src/PhysiCell ]
+then
+    echo &quot;WARNING : /c/Users/$USER/src/PhysiCell already exists! do you wanna re-install? data will be lost! [Y,N]&quot;
+    read uart
+else
+    uart=&#39;Y&#39;
+fi
+if [ $install == $uart ]
+then
+    mkdir -p /c/Users/$USER/src
+    cd /c/Users/$USER/src
+    curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip &gt; download.zip
+    unzip download.zip
+    rm download.zip
+    rm -fr PhysiCell
+    mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
+else
+    echo &#39;installation terminated.&#39;
+fi
                 </code></pre>
                 </div>
 
                 <h3>Test the PhysiCell installation with the template sample project:</h3>
-                <div><pre><code>cd /c/Users/$USER/src/PhysiCell</code></pre></div>
-                <div><pre><code>make template</code></pre></div>
-                <div><pre><code>make -j8</code></pre></div>
-                <div><pre><code>./project.exe</code></pre></div>
-                <div><pre><code>make jpeg</code></pre></div>
-                <div><pre><code>make gif</code></pre></div>
-                <div><pre><code>make movie</code></pre></div>
+                <p>Run this code line by line.</p>
+                <div>
+                <pre><code>cd /c/Users/$USER/src/PhysiCell</code></pre>
+                <pre><code>make template</code></pre>
+                <pre><code>make -j8</code></pre>
+                <pre><code>./project.exe</code></pre>
+                <pre><code>make jpeg</code></pre>
+                <pre><code>make gif</code></pre>
+                <pre><code>make movie</code></pre>
+                </div>
 
                 <h3>Optional: make a shortcut from your MSYS2 home to your Windows home folder.</h3>
-                <p>Run as Administrator a PowerShell (v7.x) or run as Administrator a WindowsPowerShell (v5.1) ~ the regular one, not the ISE and not the x86 one!</p>
+                <p>Run as Administrator a PowerShell (v7.x) or WindowsPowerShell (v5.1) ~ the regular one, not the ISE and not the x86 one!</p>
                 <p>Note that this time you have to run the shell as an administrator. Note that because of that, you have to type out your username and cannot use the $USER variable.</p>
+                <p>Run this code line by line.</p>
                 <div><pre><code>Set-Location C:\msys64\home\&lt;YOUR_USER_NAME&gt;</code></pre></div>
                 <div><pre><code>New-Item -ItemType SymbolicLink -Path C:\msys64\home\&lt;YOUR_USER_NAME&gt;\shortcut -Target C:\Users\&lt;YOUR_USER_NAME&gt;</code></pre></div>
                 <p>Now, when you have opened a MSYS2 MINGW64 shell (e.g., to run PhysiCell), to change to your Windows home directory, you can simply do:</p>
@@ -121,91 +123,100 @@
                 <p>We will generate a Python3 environment with the default Python installation, where we will install all PhysiCell modeling related Python libraries. We will name this Python3 environment pcvenv (PhysiCell virtual environment).</p>
 
                 <h3>Install Python:</h3>
-                <p>If you have not already installed Python, please go to https://www.python.org/downloads/ and <strong>install</strong> the latest <strong>Python</strong> source release.</p>
+                <p>If you have not already installed Python, please go to <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> and <strong>install</strong> the latest <strong>Python</strong> source release.</p>
 
                 <h3>Get the Windows PowerShell ready:</h3>
                 <p>Open a PowerShell (v7.x) or WindowsPowerShell (v5.1) ~ the regular one, not the ISE and not the x86 one!</p>
-                <p>If you wonder, why there is more than one PowerShell flavor, read this article. Our script will run on both flavors. + https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell</p>
+                <p>If you wonder, why there is more than one PowerShell flavor, read this article. Our script will run on both flavors.<br/><a href="https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell">https://learn.mic    rosoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell</a></p>
                 <p>To activate Python environments, we have to be able to run PowerShell scripts. This is why we have to change the execution policy. Please run the command below and confirm with Y.</p>
                 <div><pre><code>Set-ExecutionPolicy Unrestricted -Scope CurrentUser</code></pre></div>
 
                 <h3>Install PhysiCell-Studio:</h3>
-                <p>Copy past (use ctrl + v for paste and not the mouse menue) the code below into the shell and press the enter key to generate the pcvenev virtual Python environment.</p>
+                <p>Copy and past the code below into the shell and press the enter key to generate the pcvenev virtual Python environment.</p>
 
                 <div>
                 <pre><code>
-                $install = &#39;Y&#39;
-                $uart = &#39;None&#39;
-                if (Test-Path ~\src\pcvenv) {
-                    $uart = Read-Host &quot;WARNING : C:\Users\$ENV:UserName\src\pcvenv already exists! do you wanna re-install the pcvenv Python environment? data will be lost, and PhysiCell-Studio has to be re-installed too! [Y,N]&quot;
-                } else {
-                    $uart = &#39;Y&#39;
-                }
-                if ($install -eq $uart) {
-                    if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
-                    Set-Location ~\src
-                    python.exe -m venv pcvenv
-                    if (!(Test-Path -Path $PROFILE)) { New-Item -ItemType File -Path $PROFILE -Force }
-                    $scavenge = Get-Content $PROFILE
-                    if ($scavenge -match &#39;Set-Alias -Name pcvenv -Value&#39;) {} else {
-                        Add-Content -Path $PROFILE -Value &quot;Set-Alias -Name pcvenv -Value &quot;&quot;C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1&quot;&quot;&quot;
-                    }
-                    if (Test-Path C:\msys64\home\$ENV:UserName\.bash_profile) {} else { New-Item ~\.bash_profile }
-                    $scavenge = Get-Content C:\msys64\home\$ENV:UserName\.bash_profile
-                    if ($scavenge -match &#39;alias pcvenv=&#39;) {} else {
-                        Add-Content -Path  C:\msys64\home\$ENV:UserName\.bash_profile -Value &quot;alias pcvenv=&quot;&quot;source /c/Users/$ENV:UserName/src/pcvenv/Scripts/activate&quot;&quot;&quot;
-                    }
-                    &#39;pcvenv virtual Python environment generated.&#39;
-                } else {
-                    &#39;installation terminated.&#39;
-                }
+$install = &#39;Y&#39;
+$uart = &#39;None&#39;
+if (Test-Path ~\src\pcvenv) {
+    $uart = Read-Host &quot;WARNING : C:\Users\$ENV:UserName\src\pcvenv already exists! do you wanna re-install the pcvenv Python environment? data will be lost, and PhysiCell-Studio has to be re-installed too! [Y,N]&quot;
+} else {
+    $uart = &#39;Y&#39;
+}
+if ($install -eq $uart) {
+    if (Test-Path ~\src) {} else { New-Item ~\src -Type Directory }
+    Set-Location ~\src
+    python.exe -m venv pcvenv
+    if (!(Test-Path -Path $PROFILE)) { New-Item -ItemType File -Path $PROFILE -Force }
+    $scavenge = Get-Content $PROFILE
+    if ($scavenge -match &#39;Set-Alias -Name pcvenv -Value&#39;) {} else {
+        Add-Content -Path $PROFILE -Value &quot;Set-Alias -Name pcvenv -Value &quot;&quot;C:\Users\$ENV:UserName\src\pcvenv\Scripts\Activate.ps1&quot;&quot;&quot;
+    }
+    if (Test-Path C:\msys64\home\$ENV:UserName\.bash_profile) {} else { New-Item ~\.bash_profile }
+    $scavenge = Get-Content C:\msys64\home\$ENV:UserName\.bash_profile
+    if ($scavenge -match &#39;alias pcvenv=&#39;) {} else {
+        Add-Content -Path  C:\msys64\home\$ENV:UserName\.bash_profile -Value &quot;alias pcvenv=&quot;&quot;source /c/Users/$ENV:UserName/src/pcvenv/Scripts/activate&quot;&quot;&quot;
+    }
+    &#39;pcvenv virtual Python environment generated.&#39;
+} else {
+    &#39;installation terminated.&#39;
+}
                 </code></pre>
                 </div>
 
-                <p>Copy past (use ctrl + v for paste and not the mouse menue) the code below into the shell and press the enter key to install PhysiCell-Studio into the pcvenv virtual Python environment.</p>
+                <p>Open a fresh PowerShell (v7.x) or WindowsPowerShell (v5.1) ~ the regular one, not the ISE and not the x86 one!</p>
+                <p>Copy and past the code below into the shell and press the enter key to install PhysiCell-Studio into the pcvenv virtual Python environment.</p>
 
                 <div>
                 <pre><code>
-                if (Test-Path ~\src\pcvenv) {
-                    $install = &#39;Y&#39;
-                    $uart = &#39;None&#39;
-                    if (Test-Path ~\src\PhysiCell-Studio) {
-                        $uart = Read-Host &quot;WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install PhysiCell-Studio? data will be lost! [Y,N]&quot;
-                    } else {
-                        $uart = &#39;Y&#39;
-                    }
-                    if ($install -eq $uart) {
-                        pcvenv
-                        curl.exe -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip --output download.zip
-                        Expand-Archive -Path download.zip -DestinationPath .
-                        Remove-Item download.zip
-                        if (Test-Path PhysiCell-Studio) { Remove-Item PhysiCell-Studio -Recurse }
-                        Move-Item PhysiCell-Studio-$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
-                        pip3.exe install -r PhysiCell-Studio\requirements.txt
-                        Set-Location ~\src\pcvenv\Scripts
-                        Set-Content -Path pcstudio.ps1 -Value &quot;python.exe C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $args&quot;
-                        Set-Content -Path pcstudio.exe -Value &quot;python.exe /c/Users/$ENV:UserName/src/PhysiCell-Studio/bin/studio.py $*&quot;
-                        Set-Location ~\src
-                    } else {
-                        &#39;installation terminated.&#39;
-                    }
-                } else {
-                    &#39;ERROR : pcvenv virtual Python environment could not be detected. please run the code cell above to generate the pcvenev virtual Python environment!&#39;
-                }
+if (Test-Path ~\src\pcvenv) {
+    $install = &#39;Y&#39;
+    $uart = &#39;None&#39;
+    if (Test-Path ~\src\PhysiCell-Studio) {
+        $uart = Read-Host &quot;WARNING : C:\Users\$ENV:UserName\src\PhysiCell-Studio already exists! do you wanna re-install PhysiCell-Studio? data will be lost! [Y,N]&quot;
+    } else {
+        $uart = &#39;Y&#39;
+    }
+    if ($install -eq $uart) {
+        pcvenv
+        curl.exe -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip --output download.zip
+        Expand-Archive -Path download.zip -DestinationPath .
+        Remove-Item download.zip
+        if (Test-Path PhysiCell-Studio) { Remove-Item PhysiCell-Studio -Recurse }
+        Move-Item PhysiCell-Studio-$(curl.exe https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
+        pip3.exe install -r PhysiCell-Studio\requirements.txt
+        Set-Location ~\src\pcvenv\Scripts
+        Set-Content -Path pcstudio.ps1 -Value &quot;python.exe C:\Users\$ENV:UserName\src\PhysiCell-Studio\bin\studio.py $args&quot;
+        Set-Content -Path pcstudio.exe -Value &quot;python.exe /c/Users/$ENV:UserName/src/PhysiCell-Studio/bin/studio.py $*&quot;
+        Set-Location ~\src
+    } else {
+        &#39;installation terminated.&#39;
+    }
+} else {
+    &#39;ERROR : pcvenv virtual Python environment could not be detected. Before you run this code, had you run the code to generate the pcvenev virtual Python environment? And had you run this code in a fresh PowerShell?&#39;
+}
                 </code></pre>
                 </div>
 
                 <h3>Run PhysiCell-Studio in PowerShell:</h3>
-                <p>Open a PowerShell (v7.x) or WindowsPowerShell ~ the regular one, not the ISE and not the x86 one (v5.1)!</p>
-                <div><pre><code>Set-Location ~\src\PhysiCell</code></pre></div>
-                <div><pre><code>pcvenv</code></pre></div>
-                <div><pre><code>pcstudio.ps1</code></pre></div>
+                <p>Open a fresh PowerShell (v7.x) or WindowsPowerShell (v5.1) ~ the regular one.</p>
+                <p>Run this code line by line.</p>
+                <p>Note the pcstudio <strong>ps1</strong> extension.</p>
+                <div>
+                <pre><code>Set-Location ~\src\PhysiCell</code></pre>
+                <pre><code>pcvenv</code></pre>
+                <pre><code>pcstudio.ps1</code></pre>
+                </div>
 
                 <h3>Run PhysiCell-Studio in the MYSYS2 shell:</h3>
-                <p>Open the MSYS2 MINGW64 shell ~ the one with the blue MSYS2 icon, no other color!</p>
-                <div><pre><code>cd  /c/Users/$USER/src/PhysiCell</code></pre></div>
-                <div><pre><code>pcvenv</code></pre></div>
-                <div><pre><code>pcstudio.exe</code></pre></div>
+                <p>Open a fresh MSYS2 MINGW64 shell ~ the one with the blue MSYS2 icon, no other color!</p>
+                <p>Run this code line by line.</p>
+                <p>Note the pcstudio <strong>exe</strong> extension.</p>
+                <div>
+                <pre><code>cd  /c/Users/$USER/src/PhysiCell</code></pre>
+                <pre><code>pcvenv</code></pre>
+                <pre><code>pcstudio.exe</code></pre>
+                </div>
 
                 <h3>Official PhysiCell Studio manual:</h3>
                 <p>
@@ -219,13 +230,24 @@
 
                 <h3>Install PhysiCell Data Loader (pcdl) and iPython:</h3>
                 <p>Open a PowerShell or MSYS2 MINGW64 shell.</p>
-                <div><pre><code>pcvenv</code></pre></div>
-                <div><pre><code>pip3.exe install pcdl ipython</code></pre></div>
+                <p>Run this code line by line.</p>
+                <div>
+                <pre><code>pcvenv</code></pre>
+                <pre><code>pip3.exe install pcdl ipython</code></pre>
+                </div>
 
                 <h3>Test the pcdl installation:</h3>
-                <div><pre><code>ipython</code></pre></div>
-                <div><pre><code>import pcdl</code></pre></div>
-                <div><pre><code>exit()</code></pre></div>
+                <p>Fire up a python shell.</p>
+                <div>
+                <pre><code>ipython</code></pre>
+                </div>
+
+                <div>
+                <p>Inside the python shell write:</p>
+                <pre><code>import pcdl</code></pre>
+                <pre><code>print(pcdl.__version__)</code></pre>
+                <pre><code>exit()</code></pre>
+                </div>
 
                 <h3>Official pcdl manual:</h3>
                 <p>
@@ -235,18 +257,18 @@
                 <h2>IDE VSCode integration (optional)</h2>
 
                 <ol type="1">
-                <li><p>Install vs code, either from your operating system’s app store or from https://code.visualstudio.com/ .</p></li>
+                <li><p>Install vs code, either from your operating system’s app store or from <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a> .</p></li>
                 <li><p>Generate a vs code profile for physicell:</p></li>
                 </ol>
 
                 <pre><code>
-                File | New Window with Profile
-                Name: physicell
-                Icon: choose something cool.
-                Create
-                Add Folder: C:\Users\&lt;username&gt;\src
-                click the profile icon (default is a gearwheel) on the left side bottom corner.
-                Profile &gt; physicell
+File | New Window with Profile &gt; New Profile…
+Name: physicell
+Icon: choose something cool.
+Create
+Add Folder: C:\Users\&lt;username&gt;\src
+click the profile icon (default is a gearwheel) on the left side bottom corner.
+Profile &gt; physicell
                 </code></pre>
 
                 <ol start="3" type="1">
@@ -254,8 +276,8 @@
                 </ol>
 
                 <pre><code>
-                File | Open Folder… | src | Open
-                Yes, I trust the authors
+File | Open Folder… | C:\Users\&lt;username&gt;\src | Add Folder
+Yes, I trust the authors
                 </code></pre>
 
                 <ol start="4" type="1">
@@ -263,10 +285,10 @@
                 </ol>
 
                 <pre><code>
-                click the profile icon (default is a gearwheel) on the left side bottom corner.
-                Profile &gt; physicell
-                Extension: Python Install
-                Extension: C/C++ Install
+click the profile icon (default is a gearwheel) on the left side bottom corner.
+Profile &gt; physicell
+Extension: Python Install
+Extension: C/C++ Install
                 </code></pre>
 
                 <ol start="5" type="1">
@@ -274,25 +296,36 @@
                 </ol>
 
                 <pre><code>
-                View | Command Palette… | Python: Select Interpreter |
-                Enter interpreter path… | Find… | src/pcvenv
+View | Command Palette… | Python: Select Interpreter | Enter interpreter path… | Find… | C:\Users\&lt;username&gt;\src\pcvenv
                 </code></pre>
 
                 <ol start="6" type="1">
-                <li>Link msys2 MINGW64 as default shelll:</li>
+                <li>Link the msys2 MINGW64 shell:</li>
                 </ol>
 
                 <pre><code>
-                View | Command Palette… | Preferences: Open Workspace Settings (JSON)
+View | Command Palette… | Preferences: Open User Settings (JSON)
                 </code></pre>
 
                 <p>copy the msys2 configuration json for visual studio code (not sublime text!) found at <a href="https://www.msys2.org/docs/ides-editors/#visual-studio-code">https://www.msys2.org/docs/ides-editors/#visual-studio-code</a> and pasted it into the vs code settings.json .</p>
 
                 <pre><code>
-                now, important: replace the -ucrt64 parameter with -mingw64 parameter.
-                close the settings.json tab # a dialog window will pop up.
-                click Save
-                Terminal| New Terminal # a msys2 shell integrated into the vs code IDE should open.
+IMPORTANT:
+replace the <strong>MSYS2 UCRT</strong> name with <strong>MSYS2 MINGW64</strong>.
+replace the <strong>-ucrt64</strong> parameter with <strong>-mingw64</strong>.
+close the settings.json tab # a dialog window will pop up.
+click Save
+                </code></pre>
+
+                <p>Now we make msys2 MINGW64 the default shell for the physicell profile.</p>
+                <pre><code>
+View | Command Palette… | Terminal: Select Default Profile
+Choose MSYS2 MINGW64 (with the cmd.exe /c "C:\msys64\msys2_shell.cmd -defterm -here -no-start -mingw64" argument).
+                </code></pre>
+
+                <p>And open a default shell.</p>
+                <pre><code>
+Terminal| New Terminal # a msys2 shell integrated into the vs code IDE should open.
                 </code></pre>
 
                 </div>
