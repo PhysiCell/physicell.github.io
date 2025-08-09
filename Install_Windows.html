@@ -101,6 +101,7 @@ fi
                 <p>Run this code line by line.</p>
                 <div>
                 <pre><code>cd /c/Users/$USER/src/PhysiCell</code></pre>
+                <pre><code>make data-cleanup clean reset</code></pre>
                 <pre><code>make template</code></pre>
                 <pre><code>make -j8</code></pre>
                 <pre><code>./project.exe</code></pre>
@@ -123,7 +124,7 @@ fi
                 <p>We will generate a Python3 environment with the default Python installation, where we will install all PhysiCell modeling related Python libraries. We will name this Python3 environment pcvenv (PhysiCell virtual environment).</p>
 
                 <h3>Install Python:</h3>
-                <p>If you have not already installed Python, please go to <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> and <strong>install</strong> the latest <strong>Python</strong> source release.</p>
+                <p>If you have not already installed Python, please go to <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> and <strong>install</strong> the latest <strong>Python</strong> release.</p>
 
                 <h3>Get the Windows PowerShell ready:</h3>
                 <p>Open a PowerShell (v7.x) or WindowsPowerShell (v5.1) ~ the regular one, not the ISE and not the x86 one!</p>
@@ -199,7 +200,7 @@ if (Test-Path ~\src\pcvenv) {
                 </div>
 
                 <h3>Run PhysiCell-Studio in PowerShell:</h3>
-                <p>Open a fresh PowerShell (v7.x) or WindowsPowerShell (v5.1) ~ the regular one.</p>
+                <p>Open a fresh PowerShell (v7.x) or WindowsPowerShell (v5.1) ~ the regular one, not the ISE and not the x86 one!</p>
                 <p>Run this code line by line.</p>
                 <p>Note the pcstudio <strong>ps1</strong> extension.</p>
                 <div>
@@ -296,7 +297,7 @@ Extension: C/C++ Install
                 </ol>
 
                 <pre><code>
-View | Command Palette… | Python: Select Interpreter | Enter interpreter path… | Find… | C:\Users\&lt;username&gt;\src\pcvenv
+View | Command Palette… | Python: Select Interpreter | Enter interpreter path… | Find… | C:\Users\&lt;username&gt;\src\pcvenv\Scripts\python.exe
                 </code></pre>
 
                 <ol start="6" type="1">
@@ -307,7 +308,7 @@ View | Command Palette… | Python: Select Interpreter | Enter interpreter path�
 View | Command Palette… | Preferences: Open User Settings (JSON)
                 </code></pre>
 
-                <p>copy the msys2 configuration json for visual studio code (not sublime text!) found at <a href="https://www.msys2.org/docs/ides-editors/#visual-studio-code">https://www.msys2.org/docs/ides-editors/#visual-studio-code</a> and pasted it into the vs code settings.json .</p>
+                <p>copy the msys2 configuration <a href="https://www.json.org/json-en.html">json</a> for visual studio code (not sublime text!) found at <a href="https://www.msys2.org/docs/ides-editors/#visual-studio-code">https://www.msys2.org/docs/ides-editors/#visual-studio-code</a> and past it into the vs code settings.json .</p>
 
                 <pre><code>
 IMPORTANT:
@@ -350,4 +351,3 @@ Terminal| New Terminal # a msys2 shell integrated into the vs code IDE should op
 
         </body>
         </html>
-
