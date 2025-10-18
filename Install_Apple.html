@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+
+
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+
+        <meta name="description" content="PhysiCell Project Website">
+        <meta name="keywords" content="PhysiCell,Agent-Based Modeling,Multicellular Systems Biology,Cancer,Modeling">
+
+        <link rel="stylesheet" type="text/css" media="screen" href="physicell.css">
+
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+
+
+    <title style="color:white;">PhysiCell Project Website: Template</title>
+</head>
+
+<body>
+
+    <div class="page">
+        <div class="header">
+        <img src="images/PhysiCell-Logo.png" alt="PhysiCell Logo" style="width:2.8cm;height:2.8cm; border: 0px solid red; margin-left: -0mm; margin-right: -0mm; margin-bottom: 1mm;">
+        <img src="images/banner.png" alt="PhysiCell Project Website"
+         style="width: 21.59cm; height: 3cm; border: 0px solid red; margin-left: 0cm;">
+         <!-- <img src="images/PhysiCell-Logo.png" alt="PhysiCell Logo" style="width:3cm;height:3cm; border: 1px solid red; margin-left: -5mm; margin-right: -5mm;">  -->
+        </div>
+
+        <div class="menu">
+            <a href="index.html" class="menu_button"><span class="menu_button">Home</span></a>
+            <a href="Downloads.html" class="menu_button"><span class="menu_button">Downloads</span></a>
+            <a href="Training.html" class="menu_button"><span class="menu_button">Training</span></a>
+            <a href="Ecosystem.html" class="menu_button"><span class="menu_button">Software Ecosystem</span></a>
+            <a href="Community_Highlights.html" class="menu_button"><span class="menu_button">Community Highlights</span></a>
+            <a href="Team.html" class="menu_button"><span class="menu_button">Team</span></a>
+            <a href="Roadmap.html" class="menu_button"><span class="menu_button">Roadmap</span></a>
+            <a href="Acknowledgements.html" class="menu_button"><span class="menu_button">Acknowledgements</span></a>
+            <!--
+            <a href="http://MathCancer.org/blog/" class="menu_button"><span class="menu_button">News</span></a>
+            -->
+            <a href="Citing_PhysiCell.html" class="menu_button"><span class="menu_button">Citing PhysiCell</span></a>
+            <a href="Contact.html" class="menu_button"><span class="menu_button">Contact</span></a>
+        </div>
+
+
+        <div class="content">
+
+        <h1>&#x1F34E; Setup PhysiCell on macOS</h1>
+        <p>We will install everything PhysiCell related under the src folder that we will place in your home directory. If you prefer another folder name, please adjust the commands accordingly.</p>
+
+        <h2>Operating system dependencies.</h2>
+
+        <h3>Install Brew:</h3>
+        <p>Follow the instruction to download and install brew. Basically, copy the installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.</p>
+        <p><a href="https://brew.sh/">https://brew.sh/</a></p>
+        <p>Don’t forget to put brew under your $PATH.</p>
+
+        <div>
+        <pre><code>
+if ! grep -Fq &#39;/opt/homebrew/bin&#39; ~/.zshrc
+then
+    echo &#39;export PATH=/opt/homebrew/bin:$PATH&#39; &gt;&gt; ~/.zshrc
+fi
+if ! grep -Fq &#39;/opt/homebrew/bin&#39; ~/.bash_profile
+then
+    echo &#39;export PATH=/opt/homebrew/bin:$PATH&#39; &gt;&gt; ~/.bash_profile
+fi
+if ps -p $$ | grep zsh
+then
+    source ~/.zshrc
+else
+    source ~/.bash_profile
+fi
+        </code></pre>
+        </div>
+
+        <h3>Install GCC, ImageMagick, and FFmpeg (required by PhysiCell):</h3>
+        <div>
+        <pre><code>brew install gcc imagemagick ffmpeg</code></pre>
+        </div>
+
+        <h2>Basic PhyiCell installation</h2>
+        <p>Important: before you run the basic physicell installation, you have to install the operating system dependencies!</p>
+
+        <h3>Install PhysiCell:</h3>
+        <p>Copy the whole installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.</p>
+
+        <div>
+        <pre><code>
+if [ -d ~/src/PhysiCell ]
+then
+    echo &quot;ERROR : /Users/$USER/src/PhysiCell already exists! please delete the folder if you want to do a reinstallation. installation terminated.&quot;
+else
+    mkdir -p ~/src
+    cd ~/src
+    if ! grep -Fq &#39;export PHYSICELL_CPP=&#39; ~/.zshrc
+    then
+        echo export PHYSICELL_CPP=$(bash -c &quot;compgen -c&quot; | grep -m 1 -e &#39;^g++-[0-9]\+&#39;) &gt;&gt; ~/.zshrc
+    fi
+    if ! grep -Fq &#39;export PHYSICELL_CPP=&#39; ~/.bash_profile
+    then
+        echo export PHYSICELL_CPP=$(bash -c &quot;compgen -c&quot; | grep -m 1 -e &#39;^g++-[0-9]\+&#39;) &gt;&gt; ~/.bash_profile
+    fi
+    if ps -p $$ | grep zsh
+    then
+        source ~/.zshrc
+    else
+        source ~/.bash_profile
+    fi
+    curl -L https://github.com/MathCancer/PhysiCell/archive/refs/tags/$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt).zip &gt; download.zip
+    unzip download.zip
+    rm download.zip
+    rm -fr PhysiCell
+    mv PhysiCell-$(curl https://raw.githubusercontent.com/MathCancer/PhysiCell/master/VERSION.txt) PhysiCell
+fi
+        </code></pre>
+        </div>
+
+        <h3>Test the PhysiCell installation with the template sample project:</h3>
+        <p>Run this code line by line.</p>
+        <div>
+        <pre><code>cd ~/src/PhysiCell</code></pre>
+        <pre><code>make data-cleanup clean reset</code></pre>
+        <pre><code>make template</code></pre>
+        <pre><code>make -j8</code></pre>
+        <pre><code>./project</code></pre>
+        <pre><code>make jpeg</code></pre>
+        <pre><code>make gif</code></pre>
+        <pre><code>make movie</code></pre>
+        </div>
+
+        <h2>Essential installation</h2>
+        <p>We will generate a python3 environment with the default python installation, where we will install all PhysiCell modelling related python libraries. We will name this python3 environment pcvenv (PhysiCell virtual environment).</p>
+
+        <h3>Install PhysiCell-Studio:</h3>
+        <p>Copy the whole installation command, paste it into the Terminal (found at Applications / Utilities), and press the enter key.</p>
+        <div>
+        <pre><code>
+if [ -d ~/src/PhysiCell-Studio ]
+then
+    echo &quot;ERROR : /Users/$USER/src/PhysiCell-Studio already exists! please delete the folder if you want to do a reinstallation. installation terminated.&quot;
+else
+    cd ~/src
+    python3 -m venv pcvenv
+    if ! grep -Fq &#39;alias pcvenv=&#39; ~/.zshrc
+    then
+        echo &quot;alias pcvenv=\&quot;source /Users/$USER/src/pcvenv/bin/activate\&quot;&quot; &gt;&gt; ~/.zshrc
+    fi
+    if ! grep -Fq &#39;alias pcvenv=&#39; ~/.bash_profile
+    then
+        echo &quot;alias pcvenv=\&quot;source /Users/$USER/src/pcvenv/bin/activate\&quot;&quot; &gt;&gt; ~/.bash_profile
+    fi
+    source /Users/$USER/src/pcvenv/bin/activate
+    curl -L https://github.com/PhysiCell-Tools/PhysiCell-Studio/archive/refs/tags/v$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt).zip &gt; download.zip
+    unzip download.zip
+    rm download.zip
+    rm -fr PhysiCell-Studio
+    mv PhysiCell-Studio-$(curl https://raw.githubusercontent.com/PhysiCell-Tools/PhysiCell-Studio/refs/heads/main/VERSION.txt) PhysiCell-Studio
+    pip3 install -r PhysiCell-Studio/requirements.txt
+    cd ~/src/pcvenv/bin/
+    echo &quot;python3 /Users/$USER/src/PhysiCell-Studio/bin/studio.py \$*&quot; &gt; pcstudio
+    chmod 775 pcstudio
+    cd ~/src
+fi
+        </code></pre>
+        </div>
+
+        <h3>Test the PhysiCell-Studio installation:</h3>
+        <p>Run this code line by line.</p>
+        <div><pre><code>cd ~/src/PhysiCell</code></pre></div>
+        <div><pre><code>pcvenv</code></pre></div>
+        <div><pre><code>pcstudio</code></pre></div>
+
+        <h3>Official PhysiCell Studio manual:</h3>
+        <p>
+        <a href="https://github.com/PhysiCell-Tools/Studio-Guide/tree/main">https://github.com/PhysiCell-Tools/Studio-Guide/tree/main</a>
+        </p>
+
+        <h2>Advanced installation</h2>
+
+        <h3>Install PhysiCell Data Loader (pcdl) and iPython:</h3>
+        <p>Run this code line by line.</p>
+        <div><pre><code>pcvenv</code></pre></div>
+        <div><pre><code>pip3 install pcdl ipython</code></pre></div>
+
+        <h3>Test the pcdl installation:</h3>
+        <p>Fire up a python shell.</p>
+        <div>
+        <pre><code>ipython</code></pre>
+        </div>
+
+        <p>Inside the python shell write:</p>
+        <div>
+        <pre><code>import pcdl</code></pre>
+        <pre><code>print(pcdl.__version__)</code></pre>
+        <pre><code>exit()</code></pre>
+        </div>
+
+        <h3>Official pcdl manual:</h3>
+        <p>
+        <a href="https://github.com/PhysiCell-Tools/python-loader">https://github.com/PhysiCell-Tools/python-loader</a>
+        </p>
+
+        <h2>IDE VSCode integration (optional)</h2>
+
+        <ol type="1">
+        <li><p>Install vs code, either from your operating system’s app store or from <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a> .</p></li>
+        <li><p>Generate a vs code profile for physicell:</p></li>
+        </ol>
+
+        <pre><code>
+File | New Window with Profile &gt; New Profile…
+Name: physicell
+Icon: choose something cool.
+Create
+Add Folder: Users/&lt;username&gt;/src
+click the profile icon (default is a gearwheel) on the left side bottom corner.
+Profile &gt; physicell
+        </code></pre>
+
+        <ol start="3" type="1">
+        <li>Open the Folder:</li>
+        </ol>
+
+        <pre><code>
+File | Open Folder… | Users/&lt;username&gt;/src | Open
+Yes, I trust the authors
+        </code></pre>
+
+        <ol start="4" type="1">
+        <li>Install the official python and C++ extensions into the profile:</li>
+        </ol>
+
+        <pre><code>
+click the profile icon (default is a gearwheel) on the left side bottom corner.
+Profile &gt; physicell
+Extension: Python Install
+Extension: C/C++ Install
+        </code></pre>
+
+        <ol start="5" type="1">
+        <li>Link pcvenv (the python environment we generated above):</li>
+        </ol>
+
+        <pre><code>
+View | Command Palette… | Python: Select Interpreter | Enter interpreter path… | Find… | Users/&lt;username&gt;/src/pcvenv/bin/activate
+        </code></pre>
+
+        </div>
+
+        <div class="footer">
+        <table style="margin: 0cm; margin-left: 6%; margin-right: 6%; width: 88%;">
+            <tr>
+            <td style="width: 12%; text-align: left;"><a href="Policies.html">Site Policies</a></td>
+            <td style="width: 76%; text-align: center;">
+            Last Modified: August 14, 2025 at 0:00 AM (EST)
+            <br>
+            Copyright &copy; 2007-2025 <a href="Contact.html">Paul Macklin &amp; the PhysiCell Project</a> </td>
+            <td style="text-align: right; width: 12%;">
+            <a href="http://validator.w3.org/check?uri=referer">
+            <img src="images/valid-html5.png" alt="Valid HTML 5" style="width: 0.90166667in;">
+            </a>
+            </td>
+            </tr>
+            </table>
+        </div>
+        </div>
+
+</body>
+</html>
